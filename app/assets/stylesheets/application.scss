@@ -19,5 +19,11 @@
 // Core
 @import "base/colors.scss";
 
+// Universal settings
+
+body {
+  background-color: $subfooter;
+}
+
 // Components
 @import "components/*";
