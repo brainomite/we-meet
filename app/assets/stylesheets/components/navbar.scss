@@ -1,0 +1,23 @@
+.logo {
+  font-family: 'Leckerli One', cursive;
+  font-size: 36px;
+}
+
+header.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.navbar-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-links > li {
+  padding: 0 0 0 20px;
+}
+
+.navbar-links-newgroup {
+  padding: 0 16px 0 0;
+  border-right: 1px solid rgba(46,62,72,.12);
+}
