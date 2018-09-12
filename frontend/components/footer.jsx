@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = (props) => {
   return (
-    <footer>
+    <footer className="footer">
       <span>Created with love by Aaron Young</span>
     </footer>
   );
