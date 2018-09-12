@@ -1,14 +1,13 @@
 .footer {
   height: 306px;
   width: 100%;
-  background-color: $background-footer;
+  background-color: #353e48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer > span {
   color: white;
-  width: 300px;
-  height: 30px;
-  margin: auto;
-  display:  block;
-  text-align:  center;
+  font-size: 36px;
 }
