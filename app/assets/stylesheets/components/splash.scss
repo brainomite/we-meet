@@ -24,7 +24,7 @@
   flex-direction: column;
 }
 .splash-section-button {
-  background-color: rgb(241, 58, 89);
+  background-color: $wemeet-light-red;
   margin-top: 36px;
   width: 284.234px;
   height: 49px;
@@ -32,6 +32,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 5px
+}
+
+.splash-section-button:hover {
+  background: $wemeet-red;
+  transition: all .4s cubic-bezier(.165,.84,.44,1);
 }
 
 .splash-section > h1 {

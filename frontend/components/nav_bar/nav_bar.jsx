@@ -6,7 +6,7 @@ const NavBar = (props) => {
   return (
     <header className="navbar">
       <div className="navbar-main">
-        <Link to="/" className="logo">weMeet</Link>
+        <Link to="/" className="logo">WeMeet</Link>
         <nav>
           <ul className="navbar-main-links">
             <li className="navbar-main-links-newgroup">Start a new group</li>
