@@ -60,7 +60,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end
 
