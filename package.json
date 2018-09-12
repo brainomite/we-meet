@@ -42,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/brainomite/we-meet/issues"
   },
-  "homepage": "https://github.com/brainomite/we-meet#readme"
+  "homepage": "https://github.com/brainomite/we-meet#readme",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.5"
+  }
 }
