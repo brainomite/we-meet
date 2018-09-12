@@ -17,17 +17,23 @@
   color: white;
   font-size: 24px;
   z-index: 1;
+  width: 1068px;
+  height: 212px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .splash-section-button {
   background-color: rgb(241, 58, 89);
   margin-top: 36px;
   width: 284.234px;
-  height: 25px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-.splash-section {
-  width: 1068px;
-  height: 212;
-}
+
 .splash-section > h1 {
   font-size: 42px;
 }
