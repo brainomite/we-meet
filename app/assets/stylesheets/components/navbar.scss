@@ -4,20 +4,26 @@
 }
 
 header.navbar {
-  display: flex;
-  justify-content: space-between;
+  height: 69px;
+  width: 100%;
 }
 
-ul.navbar-links {
+.navbar-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+ul.navbar-main-links {
     display: flex;
     flex-direction: row;
 }
 
-.navbar-links > li {
-  padding: 0 0 0 20px;
+.navbar-main-links > li {
+  padding-left: 20px;
 }
 
-.navbar-links-newgroup {
-  padding: 0 16px 0 0;
+.navbar-main-links-newgroup {
   border-right: 1px solid rgba(46,62,72,.12);
+  padding-right: 16px;
 }
