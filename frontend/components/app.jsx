@@ -10,12 +10,11 @@ import Footer from './footer';
 const App = () => (
   <div>
     <NavBar />
-    <h1>Welcome to reactified we-meet</h1>
-    <Switch>
-      <Route path="/" exact component={Splash} />
-      <AuthRoute path="/signup" component={SignupForm} />
-      <AuthRoute path="/login" component={LoginForm} />
-    </Switch>
+      <Switch>
+        <Route path="/" exact component={Splash} />
+        <AuthRoute path="/signup" component={SignupForm} />
+        <AuthRoute path="/login" component={LoginForm} />
+      </Switch>
     <Footer />
   </div>
 );
