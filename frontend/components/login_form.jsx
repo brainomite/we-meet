@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signup } from '../actions/session_actions.js';
+import { login } from '../actions/session_actions.js';
 
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      name: '', email: '', password: '',
-      hometown_id: 1 // hard coded temporarily
+      email: '',
+      password: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,19 +24,12 @@ class SignupForm extends React.Component {
     const userObj = {
       user: this.state
     };
-    this.props.signup(userObj);
+    this.props.login(userObj);
   }
 
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>Name:
-          <input type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-        </label>
         <label>Email:
           <input type="text"
             name="email"
@@ -58,7 +51,7 @@ class SignupForm extends React.Component {
 }
 
 const mdp = (dispatch) => ({
-  signup: (user)=>dispatch(signup(user))
+  login: (user)=>dispatch(login(user))
 });
 
-export default connect(null, mdp)(SignupForm);
+export default connect(null, mdp)(LoginForm);
