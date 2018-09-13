@@ -25,5 +25,9 @@ body {
   background-color: $subfooter;
 }
 
+input, textarea {
+  color: rgba(0,0,0,.87);
+}
+
 // Components
 @import "components/*";
