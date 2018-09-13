@@ -11,7 +11,8 @@ class LoginForm extends React.Component {
       password: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoClick = this.handleDemoClick.bind(this);
   }
 
   handleChange(event){
@@ -20,10 +21,21 @@ class LoginForm extends React.Component {
     });
   }
 
-  handleClick(event){
+  handleSubmit(event){
     event.preventDefault();
     const userObj = {
       user: this.state
+    };
+    this.props.login(userObj);
+  }
+
+  handleDemoClick(event){
+    event.preventDefault();
+    const userObj = {
+      user: {
+        email: 'kermit@thefrog.com',
+        password: 'misspiggy'
+      }
     };
     this.props.login(userObj);
   }
@@ -35,12 +47,16 @@ class LoginForm extends React.Component {
           <header className="login-body-header login-container">
             <h1>Log in<img
               src={window.wemeetAssets["icon_padlock.gif"]}
-            /></h1>
+              />
+            </h1>
             <p>Not registered with us yet? <
               Link to="/signup">Sign up</Link>
             </p>
           </header>
-          <form className="login-body-form login-container">
+          <form
+            className="login-body-form login-container"
+            onSubmit={this.handleSubmit}
+          >
             <p>Email address:</p>
               <input type="text"
                 name="email"
@@ -49,14 +65,13 @@ class LoginForm extends React.Component {
                 className="login-body-form-input login-body-form-email"
                 />
             <p>Password:</p>
-            <input type="text"
+            <input type="password"
               onChange={this.handleChange}
               name="password"
               className="login-body-form-input login-body-form-password"
               value={this.state.password}
               />
             <button
-              onSubmit={this.handleClick}
               className="login-body-form-button"
             >Log In</button>
           </form>
@@ -64,6 +79,7 @@ class LoginForm extends React.Component {
           <section className="login-body-footer login-container">
             <button
               className="login-body-footer-demo"
+              onClick={this.handleDemoClick}
             >Login with the Demo User</button>
           </section>
         </div>
