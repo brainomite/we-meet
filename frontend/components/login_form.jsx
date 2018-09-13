@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from '../actions/session_actions.js';
 
 class LoginForm extends React.Component {
@@ -10,7 +11,7 @@ class LoginForm extends React.Component {
       password: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event){
@@ -19,7 +20,7 @@ class LoginForm extends React.Component {
     });
   }
 
-  handleSubmit(event){
+  handleClick(event){
     event.preventDefault();
     const userObj = {
       user: this.state
@@ -29,23 +30,41 @@ class LoginForm extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Email:
-          <input type="text"
-            name="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-        </label>
-        <label>password:
-          <input type="text"
-            onChange={this.handleChange}
-            name="password"
-            value={this.state.password}
-          />
-        </label>
-        <input type="submit" />
-      </form>
+      <main className="login">
+        <div className="login-body">
+          <header className="login-body-header">
+            <h1>Log in</h1>
+            <small>Not registered with us yet? <
+              Link to="/signup">Sign up</Link>
+            </small>
+          </header>
+          <form className="login-body-form">
+            <label>Email:
+              <input type="text"
+                name="email"
+                onChange={this.handleChange}
+                value={this.state.email}
+                className="login-form-input"
+                />
+            </label>
+            <label>password:
+              <input type="text"
+                onChange={this.handleChange}
+                name="password"
+                className="login-body-form-input"
+                value={this.state.password}
+                />
+            </label>
+            <button
+              onSubmit={this.handleClick}
+              className="login-body-form-button"
+            >Log In</button>
+          </form>
+          <section className="login-body-footer">
+            <button>Demo User</button>
+          </section>
+        </div>
+      </main>
     );
   }
 }
