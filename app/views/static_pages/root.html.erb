@@ -4,11 +4,13 @@
       "api/users/user.json.jbuilder",
       user: current_user
     ).html_safe %>
-    
-    // passing of fingerprinted assets from backend to frontend
-    window.wemeetAssets = {
-      ['icon_padlock.gif']: "<%= asset_path "icon_padlock.gif" %>",
-    }
+    console.log('wpp')
   </script>
 <% end %>
+<script type="text/javascript">
+  // passing of fingerprinted assets from backend to frontend
+  window.wemeetAssets = {
+    ['icon_padlock.gif']: "<%= asset_path "icon_padlock.gif" %>",
+  }
+</script>
 <div id="root"></div>

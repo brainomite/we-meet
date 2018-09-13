@@ -33,7 +33,9 @@ class LoginForm extends React.Component {
       <main className="login">
         <div className="login-body">
           <header className="login-body-header login-container">
-            <h1>Log in</h1>
+            <h1>Log in<img
+              src={window.wemeetAssets["icon_padlock.gif"]}
+            /></h1>
             <p>Not registered with us yet? <
               Link to="/signup">Sign up</Link>
             </p>
@@ -46,7 +48,7 @@ class LoginForm extends React.Component {
                 value={this.state.email}
                 className="login-body-form-input login-body-form-email"
                 />
-            <p>Password:</ p>
+            <p>Password:</p>
             <input type="text"
               onChange={this.handleChange}
               name="password"
