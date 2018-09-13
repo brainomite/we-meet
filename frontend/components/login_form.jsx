@@ -58,8 +58,11 @@ class LoginForm extends React.Component {
               className="login-body-form-button"
             >Log In</button>
           </form>
+          <div className="login-body-or">OR</div>
           <section className="login-body-footer login-container">
-            <button>Demo User</button>
+            <button
+              className="login-body-footer-demo"
+            >Login with the Demo User</button>
           </section>
         </div>
       </main>
