@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoginFormErrors from './login_form_errors';
 
 class LoginForm extends React.Component {
   constructor(props){
@@ -39,8 +40,14 @@ class LoginForm extends React.Component {
   }
 
   render () {
+    const errorArr = this.props.errors;
+    const errorClass = errorArr.length ? "login-errors" : "login-errors-hidden";
     return (
       <main className="login">
+        <section className={errorClass}>
+          <h1>Sorry, there was a problem.</h1>
+          <LoginFormErrors errors={errorArr} />
+        </section>
         <div className="login-body">
           <header className="login-body-header login-container">
             <h1>Log in<img
