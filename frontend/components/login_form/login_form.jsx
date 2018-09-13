@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../actions/session_actions.js';
 
 class LoginForm extends React.Component {
   constructor(props){
@@ -88,8 +86,6 @@ class LoginForm extends React.Component {
   }
 }
 
-const mdp = (dispatch) => ({
-  login: (user)=>dispatch(login(user))
-});
 
-export default connect(null, mdp)(LoginForm);
+
+export default LoginForm;
