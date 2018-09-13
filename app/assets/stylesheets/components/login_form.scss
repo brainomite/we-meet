@@ -21,6 +21,8 @@
   box-sizing: border-box;
   position: relative;
   top: 32px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-bottom: 1px solid rgba(0,0,0,.26);
 }
 
 .login-container{
@@ -91,12 +93,14 @@
 }
 
 .login-body-footer {
-  height: 84px;
+  height: 82px;
   width: 100%;
   background-color: #D8DFEA;
+  border: 1px solid rgba(0,0,0,.12);
   border-top: 1px solid #627AAD;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-bottom: 1px solid rgba(0,0,0,.26);
 }
 
 .login-body-footer-demo {
