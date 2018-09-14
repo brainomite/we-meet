@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import FormErrors from "/form_errors/form_errors";
+import FormErrors from "../form_errors/form_errors";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -32,6 +32,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <main className="signup">
+        <FormErrors errors={this.props.errors} />
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
             <h1 className="signup-form-header">Sign Up</h1>

@@ -3,7 +3,7 @@ import { login, signup } from "../../actions/session_actions";
 import SignupForm from "./signup_form.jsx";
 
 const msp = ({ errors }) => ({
-  errors: errors.users
+  errors: errors.user
 });
 
 const mdp = dispatch => ({
