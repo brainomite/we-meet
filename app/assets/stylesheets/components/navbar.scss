@@ -1,5 +1,5 @@
 .logo {
-  font-family: 'Leckerli One', cursive;
+  font-family: "Leckerli One", cursive;
   font-size: 36px;
   color: $wemeet-red;
 }
@@ -17,8 +17,8 @@ header.navbar {
 }
 
 ul.navbar-main-links {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .navbar-main-links > li {
@@ -26,6 +26,6 @@ ul.navbar-main-links {
 }
 
 .navbar-main-links-newgroup {
-  border-right: 1px solid rgba(46,62,72,.12);
+  border-right: 1px solid rgba(46, 62, 72, 0.12);
   padding-right: 16px;
 }

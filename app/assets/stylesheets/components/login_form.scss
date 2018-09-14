@@ -19,19 +19,19 @@
   background-color: $background-white;
   box-sizing: border-box;
   position: relative;
-  border: 1px solid rgba(0,0,0,.12);
-  border-bottom: 1px solid rgba(0,0,0,.26);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
   margin-top: 66px;
 }
 
-.login-container{
+.login-container {
   padding: 16px;
 }
 
 .login-body-header {
   height: 103px;
   width: 100%;
-  border-bottom: 1px solid rgba(0,0,0,.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .login-body-header a {
@@ -59,7 +59,7 @@
 
 .login-body-form-input {
   background-color: $background-off-white;
-  border: 1px solid rgba(0,0,0,.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 3px;
   width: 421.141px;
   height: 29px;
@@ -104,12 +104,12 @@
 .login-body-footer {
   height: 82px;
   width: 100%;
-  background-color: #D8DFEA;
-  border: 1px solid rgba(0,0,0,.12);
-  border-top: 1px solid #627AAD;
+  background-color: #d8dfea;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 1px solid #627aad;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  border-bottom: 1px solid rgba(0,0,0,.26);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
 }
 
 .login-body-footer-demo {
