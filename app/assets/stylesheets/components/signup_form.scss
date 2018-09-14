@@ -1,0 +1,29 @@
+.signup {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-form {
+  width: 460px;
+  padding: 16px;
+}
+
+.signup-form > form {
+  width: 100%;
+}
+
+.signup-buffer {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+
+.signup-form-header {
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.signup-form-input{
+  width: 100%;
+}
