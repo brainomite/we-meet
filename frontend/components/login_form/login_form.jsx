@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginFormErrors from "./login_form_errors";
+import FormErrors from "../form_errors/form_errors";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
     const errorArr = this.props.errors;
     return (
       <main className="login">
-        <LoginFormErrors errors={errorArr} />
+        <FormErrors errors={errorArr} />
         <div className="login-body">
           <header className="login-body-header login-container">
             <h1>
