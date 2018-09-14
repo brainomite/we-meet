@@ -18,12 +18,17 @@
   width: 100%;
 }
 
-
 .signup-form-header {
   font-size: 28px;
   line-height: 1.25;
+  margin-bottom: 32px;
+  text-align: center;
 }
 
-.signup-form-input{
+.signup-form-input {
   width: 100%;
+}
+
+signup-form-label {
+  font-weight: 700;
 }

@@ -36,51 +36,67 @@ class SignupForm extends React.Component {
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
             <h1 className="signup-form-header">Sign Up</h1>
-            <p className="signup-form-label">Name:</p>
-            <input
-              type="text"
-              name="name"
-              className="signup-form-input"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <p className="signup-form-label">Email:</p>
-            <input
-              type="text"
-              name="email"
-              className="signup-form-input"
-              onChange={this.handleChange}
-              value={this.state.email}
-            />
-            <p className="signup-form-label">password:</p>
-            <input
-              type="password"
-              className="signup-form-input"
-              onChange={this.handleChange}
-              name="password"
-              value={this.state.password}
-            />
-            <p className="signup-form-public">
-              Your name is public. We probably won't use your email address to
-              send you updates, and let you know about newly created meetups.
-            </p>
-            <button className="signup-form-submit">Continue</button>
-            <p className="signup-form-disclaimer">
-              When you "Continue", you agree to have a great day. This is a
-              student project be careful of what data you submit we will not
-              manage your information super securely, please submit fake data
-              only!
-            </p>
-            <section className="signup-form-footer">
-              <p>
-                Already a member? <Link to="/login">Log in.</Link>
+            <div className="signup-buffer">
+              <p className="signup-form-label">Name:</p>
+              <input
+                type="text"
+                name="name"
+                className="signup-form-input"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="signup-buffer">
+              <p className="signup-form-label">Email:</p>
+              <input
+                type="text"
+                name="email"
+                className="signup-form-input"
+                onChange={this.handleChange}
+                value={this.state.email}
+              />
+            </div>
+            <div className="signup-buffer">
+              <p className="signup-form-label">Password:</p>
+              <input
+                type="password"
+                className="signup-form-input"
+                onChange={this.handleChange}
+                name="password"
+                value={this.state.password}
+              />
+            </div>
+            <div className="signup-buffer">
+              <p className="signup-form-public">
+                Your name is public. We probably won't use your email address to
+                send you updates, and let you know about newly created meetups.
               </p>
-              <button
-                className="signup-form-footer-demo"
-                onClick={this.handleDemoClick}
-              >
-                Login with the Demo User
-              </button>
+            </div>
+            <div className="signup-buffer">
+              <button className="signup-form-submit">Continue</button>
+            </div>
+            <div className="signup-buffer">
+              <p className="signup-form-disclaimer">
+                When you "Continue", you agree to have a great day. This is a
+                student project be careful of what data you submit we will not
+                manage your information super securely, please submit fake data
+                only!
+              </p>
+            </div>
+            <section className="signup-form-footer">
+              <div className="signup-buffer">
+                <p>
+                  Already a member? <Link to="/login">Log in.</Link>
+                </p>
+              </div>
+              <div className="signup-buffer">
+                <button
+                  className="signup-form-footer-demo"
+                  onClick={this.handleDemoClick}
+                >
+                  Login with the Demo User
+                </button>
+              </div>
             </section>
           </form>
         </div>
