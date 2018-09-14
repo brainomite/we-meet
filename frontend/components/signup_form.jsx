@@ -69,7 +69,7 @@ class SignupForm extends React.Component {
             <div className="signup-buffer">
               <p className="signup-form-public">
                 Your name is public. We probably won't use your email address to
-                send you updates, and let you know about newly created meetups.
+                send you updates, and let you know about newly created events.
               </p>
             </div>
             <div className="signup-buffer">
@@ -78,9 +78,9 @@ class SignupForm extends React.Component {
             <div className="signup-buffer">
               <p className="signup-form-disclaimer">
                 When you "Continue", you agree to have a great day. This is a
-                student project be careful of what data you submit we will not
-                manage your information super securely, please submit fake data
-                only!
+                student project be careful of what data you submit as we will
+                not manage your information super securely, please submit fake
+                data only!
               </p>
             </div>
             <section className="signup-form-footer">

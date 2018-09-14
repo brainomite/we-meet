@@ -20,6 +20,11 @@ input {
   font-size: 16px;
 }
 
+a {
+  color: rgb(31, 36, 204);
+  text-decoration: underline;
+}
+
 input:focus {
   border-color: #1f24cc;
 }

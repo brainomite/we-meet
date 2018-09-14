@@ -29,6 +29,12 @@
   width: 100%;
 }
 
-signup-form-label {
+.signup-form-label {
   font-weight: 700;
+  font-size: 13px;
+}
+
+.signup-form-public {
+  color: $secondary-text;
+  font-size: 13px;
 }
