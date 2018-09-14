@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { signup } from "../actions/session_actions.js";
+import { signup } from "../../actions/session_actions.js";
 // import FormErrors from "/form_errors/form_errors";
 
 class SignupForm extends React.Component {
