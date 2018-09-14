@@ -19,16 +19,8 @@
 // Core
 @import "base/colors.scss";
 
-// Universal settings
-
-body {
-  background-color: $subfooter;
-  font-family: 'Roboto', sans-serif;
-}
-
-input, textarea {
-  color: rgba(0,0,0,.87);
-}
+// shared settings
+@import "shared.scss";
 
 // Components
 @import "components/*";

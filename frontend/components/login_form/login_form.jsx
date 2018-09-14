@@ -1,26 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import LoginFormErrors from './login_form_errors';
+import React from "react";
+import { Link } from "react-router-dom";
+import LoginFormErrors from "./login_form_errors";
 
 class LoginForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoClick = this.handleDemoClick.bind(this);
   }
 
-  handleChange(event){
+  handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
     const userObj = {
       user: this.state
@@ -28,18 +28,18 @@ class LoginForm extends React.Component {
     this.props.login(userObj);
   }
 
-  handleDemoClick(event){
+  handleDemoClick(event) {
     event.preventDefault();
     const userObj = {
       user: {
-        email: 'kermit@thefrog.com',
-        password: 'misspiggy'
+        email: "kermit@thefrog.com",
+        password: "misspiggy"
       }
     };
     this.props.login(userObj);
   }
 
-  render () {
+  render() {
     const errorArr = this.props.errors;
     const errorClass = errorArr.length ? "login-errors" : "login-errors-hidden";
     return (
@@ -50,12 +50,12 @@ class LoginForm extends React.Component {
         </section>
         <div className="login-body">
           <header className="login-body-header login-container">
-            <h1>Log in<img
-              src={window.wemeetAssets["icon_padlock.gif"]}
-              />
+            <h1>
+              Log in
+              <img src={window.wemeetAssets["icon_padlock.gif"]} />
             </h1>
-            <p>Not registered with us yet? <
-              Link to="/signup">Sign up</Link>
+            <p>
+              Not registered with us yet? <Link to="/signup">Sign up</Link>
             </p>
           </header>
           <form
@@ -63,36 +63,38 @@ class LoginForm extends React.Component {
             onSubmit={this.handleSubmit}
           >
             <p>Email address:</p>
-              <input type="text"
-                name="email"
-                onChange={this.handleChange}
-                value={this.state.email}
-                className="login-body-form-input login-body-form-email"
-                />
+            <input
+              type="text"
+              name="email"
+              onChange={this.handleChange}
+              value={this.state.email}
+              className="login-body-form-input login-body-form-email"
+            />
             <p>Password:</p>
-            <input type="password"
+            <input
+              type="password"
               onChange={this.handleChange}
               name="password"
               className="login-body-form-input login-body-form-password"
               value={this.state.password}
-              />
-            <button
-              className="login-body-form-button"
-            >Log In</button>
+            />
+            <button className="login-body-form-button confirm-button">
+              Log In
+            </button>
           </form>
           <div className="login-body-or">OR</div>
           <section className="login-body-footer login-container">
             <button
-              className="login-body-footer-demo"
+              className="login-body-footer-demo demo button"
               onClick={this.handleDemoClick}
-            >Login with the Demo User</button>
+            >
+              Login with the Demo User
+            </button>
           </section>
         </div>
       </main>
     );
   }
 }
-
-
 
 export default LoginForm;

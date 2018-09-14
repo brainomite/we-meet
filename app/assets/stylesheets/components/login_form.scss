@@ -58,17 +58,8 @@
 }
 
 .login-body-form-input {
-  background-color: $background-off-white;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
   width: 421.141px;
   height: 29px;
-  padding: 4px;
-  font-size: 16px;
-}
-
-.login-body-form-input:focus {
-  border-color: #1f24cc;
 }
 
 .login-body-form-email {
@@ -78,17 +69,7 @@
 .login-body-form-button {
   height: 36px;
   width: 81.6875px;
-  background-color: $wemeet-login-red;
-  border-radius: 3px;
-  border: 1px solid $wemeet-login-red;
-  color: $background-white;
-  text-align: center;
   margin-top: 12px;
-}
-
-.login-body-form-button:hover {
-  background: $wemeet-login-red-hover;
-  border-color: $wemeet-login-red-hover;
 }
 
 .login-body-or {
@@ -115,9 +96,6 @@
 .login-body-footer-demo {
   width: 421.73px;
   height: 47px;
-  background-color: $background-white;
-  text-align: center;
-  border-radius: 3px;
 }
 
 .login-errors {

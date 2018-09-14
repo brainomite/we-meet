@@ -1,0 +1,46 @@
+body {
+  background-color: $subfooter;
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  background-color: $background-white;
+}
+
+input,
+textarea {
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 3px;
+}
+
+input {
+  background-color: $background-off-white;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 4px;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #1f24cc;
+}
+
+.demo-button {
+  background-color: $background-white;
+  text-align: center;
+}
+
+button {
+  border-radius: 3px;
+}
+
+.confirm-button {
+  background-color: $wemeet-login-red;
+  border: 1px solid $wemeet-login-red;
+  color: $background-white;
+  text-align: center;
+}
+
+.confirm-button:hover {
+  background: $wemeet-login-red-hover;
+  border-color: $wemeet-login-red-hover;
+}
