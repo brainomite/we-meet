@@ -22,7 +22,6 @@ input {
 
 a {
   color: rgb(31, 36, 204);
-  text-decoration: underline;
 }
 
 input:focus {
@@ -32,10 +31,12 @@ input:focus {
 .demo-button {
   background-color: $background-white;
   text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.26);
 }
 
 button {
   border-radius: 3px;
+  font-weight: 700;
 }
 
 .confirm-button {

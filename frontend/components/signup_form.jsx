@@ -73,7 +73,9 @@ class SignupForm extends React.Component {
               </p>
             </div>
             <div className="signup-buffer">
-              <button className="signup-form-submit">Continue</button>
+              <button className="signup-form-submit confirm-button">
+                Continue
+              </button>
             </div>
             <div className="signup-buffer">
               <p className="signup-form-disclaimer">
@@ -84,14 +86,14 @@ class SignupForm extends React.Component {
               </p>
             </div>
             <section className="signup-form-footer">
-              <div className="signup-buffer">
-                <p>
+              <div className="signup-buffer signup-buffer-padding-top">
+                <p className="signup-form-footer-login">
                   Already a member? <Link to="/login">Log in.</Link>
                 </p>
               </div>
               <div className="signup-buffer">
                 <button
-                  className="signup-form-footer-demo"
+                  className="signup-form-footer-demo demo-button"
                   onClick={this.handleDemoClick}
                 >
                   Login with the Demo User

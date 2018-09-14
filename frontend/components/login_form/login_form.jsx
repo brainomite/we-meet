@@ -85,7 +85,7 @@ class LoginForm extends React.Component {
           <div className="login-body-or">OR</div>
           <section className="login-body-footer login-container">
             <button
-              className="login-body-footer-demo demo button"
+              className="login-body-footer-demo demo-button"
               onClick={this.handleDemoClick}
             >
               Login with the Demo User
