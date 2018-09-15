@@ -64,7 +64,7 @@ export const signup = user => {
       return dispatch(receiveUserErrors(errorResults));
     };
 
-    SessionAPIUtil.signup(user).then(success, failure);
+    return SessionAPIUtil.signup(user).then(success, failure);
   };
 };
 
@@ -78,6 +78,6 @@ export const logout = () => {
       return dispatch(receiveSessionErrors(errorResults));
     };
 
-    SessionAPIUtil.logout().then(success, failure);
+    return SessionAPIUtil.logout().then(success, failure);
   };
 };
