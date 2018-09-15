@@ -7,5 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+sleep 30 # Allow active storage time to purge files from s3.
 User.create name: "Kermit the Frog", email: 'kermit@thefrog.com',
             password: 'misspiggy', hometown_id: 1

@@ -41,6 +41,8 @@ class User < ApplicationRecord
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
+  has_one_attached :photo
+
   private
 
   def ensure_session_token
