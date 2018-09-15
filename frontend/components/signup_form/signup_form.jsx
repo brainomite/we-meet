@@ -94,7 +94,7 @@ class SignupForm extends React.Component {
               <div className="signup-buffer">
                 <button
                   className="signup-form-footer-demo demo-button"
-                  onClick={this.handleDemoClick}
+                  onClick={this.props.loginDemoUser}
                 >
                   Login with the Demo User
                 </button>

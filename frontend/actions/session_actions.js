@@ -46,6 +46,14 @@ export const login = user => {
   };
 };
 
+export const loginDemoUser = () =>
+  login({
+    user: {
+      email: "kermit@thefrog.com",
+      password: "misspiggy"
+    }
+  });
+
 export const signup = user => {
   return dispatch => {
     const success = result => {
