@@ -11,7 +11,6 @@ class LoginForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDemoClick = this.handleDemoClick.bind(this);
   }
 
   handleChange(event) {
@@ -24,17 +23,6 @@ class LoginForm extends React.Component {
     event.preventDefault();
     const userObj = {
       user: this.state
-    };
-    this.props.login(userObj);
-  }
-
-  handleDemoClick(event) {
-    event.preventDefault();
-    const userObj = {
-      user: {
-        email: "kermit@thefrog.com",
-        password: "misspiggy"
-      }
     };
     this.props.login(userObj);
   }
@@ -82,7 +70,7 @@ class LoginForm extends React.Component {
           <section className="login-body-footer login-container">
             <button
               className="login-body-footer-demo demo-button"
-              onClick={this.handleDemoClick}
+              onClick={this.props.loginDemoUser}
             >
               Login with the Demo User
             </button>
