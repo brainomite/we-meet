@@ -1,6 +1,6 @@
 json.extract! user, :id, :name, :hometown_id, :email
-if user.photo.attached?
-  json.photo url_for(user.photo)
+if user.avatar.attached?
+  json.avatar url_for(user.avatar)
 else
-  json.photo nil
+  json.avatar nil
 end
