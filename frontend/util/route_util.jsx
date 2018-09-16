@@ -15,7 +15,7 @@ const AuthRoute = ({
         path={path}
         exact={exact}
         render={props =>
-          loggedIn ? <Component {...props} /> : <Redirect to="/register" />
+          loggedIn ? <Component {...props} /> : <Redirect to="/signup" />
         }
       />
     );
