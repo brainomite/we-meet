@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Splash from './splash';
 import SignupForm from './signup_form/signup_form_container';
 import LoginForm from './login_form/login_form_container';
-import AvatarForm from './avatar_form';
+import AvatarForm from './avatar_form/avatar_form';
 import AuthRoute from '../util/route_util';
 import Footer from './footer';
 
