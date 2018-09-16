@@ -40,6 +40,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  font-size: 14px;
   align-items: center;
   border-radius: 3px;
   background-color: $wemeet-light-red;
@@ -47,6 +48,15 @@
 
 .avatarForm-body-button:hover {
   background-color: $wemeet-red;
+}
+.avatarForm-body-change {
+  width: 100%;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00a2c7;
 }
 .avatarForm-body-input {
   // Below from
@@ -56,6 +66,7 @@
   // styles to mean the file input isn't interactive"
   opacity: 0;
   position: absolute;
+  cursor: inherit;
 }
 
 .avatarForm-body-orLine {
@@ -78,4 +89,10 @@
 }
 .avatarForm-body-skipButton {
   color: #2e3e48;
+}
+.avatarForm-body-avatarAndLinks {
+  width: 100%;
+  display: inherit;
+  flex-direction: inherit;
+  align-items: inherit;
 }

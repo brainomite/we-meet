@@ -1,14 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import AvatarFormNoAvatar from "./avatar_form_no_avatar";
+import AvatarFormWithAvatar from "./avatar_form_with_avatar";
 
 const AvatarForm = props => {
   const preview = props.currentUser.avatarUrl ? (
-    <img
-      className="member-avatar avatarForm-avatar"
-      src={props.currentUser.avatarUrl}
-    />
+    <AvatarFormWithAvatar {...props} />
   ) : (
-    <span className="far fa-user-circle avatarForm-icon" />
+    <AvatarFormNoAvatar {...props} />
   );
   return (
     <main className="avatarForm">
@@ -19,26 +17,7 @@ const AvatarForm = props => {
         <p className="avatarForm-body-instruction avatarForm-marginBottom">
           Add a photo so other members know who you are.
         </p>
-        <div className="avatarForm-body-avatar avatarForm-marginBottom">
-          {preview}
-        </div>
-        <label className="avatarForm-body-button confirm-button">
-          Upload a photo
-          <input
-            className="avatarForm-body-input"
-            type="file"
-            onChange={props.handleFile(props)}
-          />
-        </label>
-        <div className="avatarForm-body-orLine">
-          <p className="avatarForm-body-or">Or</p>
-        </div>
-        <Link
-          className="avatarForm-body-skipButton avatarForm-marginBottom"
-          to="/"
-        >
-          Skip for now
-        </Link>
+        {preview}
       </section>
     </main>
   );
