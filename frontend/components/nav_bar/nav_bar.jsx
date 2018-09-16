@@ -16,12 +16,20 @@ class NavBar extends React.Component {
 
   openMenu() {
     this.setState({
-      menu: <NavBarMenu closeMenu={this.closeMenu} />
+      menu: (
+        <NavBarMenu
+          closeMenu={this.closeMenu}
+          logout={this.props.logout}
+          currentUser={this.props.currentUser}
+          push={this.props.history.push}
+          pathname={this.props.location.pathname}
+        />
+      )
     });
   }
 
   closeMenu(evt) {
-    evt.stopPropagation()
+    evt.stopPropagation();
     this.setState({
       menu: null
     });
@@ -77,11 +85,6 @@ class NavBar extends React.Component {
                   </li>
                 )}
                 {avatar}
-                {loggedIn ? (
-                  <li>
-                    <button onClick={this.props.logout}>logout</button>
-                  </li>
-                ) : null}
               </ul>
             )}
           </nav>
