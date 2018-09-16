@@ -7,9 +7,11 @@ import LoginForm from './login_form/login_form_container';
 import AvatarForm from './avatar_form/avatar_form_container';
 import AuthRoute from '../util/route_util';
 import Footer from './footer';
+import Modal from './modal';
 
 const App = () => (
   <div>
+    <Modal />
     <NavBar />
       <Switch>
         <Route path="/" exact component={Splash} />

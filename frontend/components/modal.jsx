@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Loading from '../loading';
+import Loading from './loading';
 
 function Modal({ modal }) {
   if (!modal) {

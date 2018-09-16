@@ -1,7 +1,9 @@
 import React from "react";
 
 const Loading = () => {
-  return <div />;
+  return (
+      <span className="fas fa-circle-notch loading-spinner" />
+  );
 };
 
 export default Loading;
