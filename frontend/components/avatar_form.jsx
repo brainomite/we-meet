@@ -22,13 +22,15 @@ const AvatarForm = props => {
   const preview = props.currentUser.avatarUrl ? (
     <img src={props.currentUser.avatarUrl} />
   ) : (
-    <span className="far fa-user-circle" />
+    <span className="far fa-user-circle avatarForm-icon" />
   );
   return (
     <main className="avatarForm">
-      <div className="avatarForm-body">
-        <h1 className="avatarForm-body-header">Welcome!</h1>
-        <p className="avatarForm-body-instruction">
+      <section className="avatarForm-body">
+        <h1 className="avatarForm-body-header avatarForm-marginBottom">
+          Welcome!
+        </h1>
+        <p className="avatarForm-body-instruction avatarForm-marginBottom">
           Add a photo so other members know who you are.
         </p>
         <div className="avatarForm-body-avatar">{preview}</div>
@@ -44,7 +46,7 @@ const AvatarForm = props => {
         <Link className="avatarForm-body-skipButton" to="/">
           Skip for now
         </Link>
-      </div>
+      </section>
     </main>
   );
 };

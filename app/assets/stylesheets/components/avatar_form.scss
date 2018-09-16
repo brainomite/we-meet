@@ -1,0 +1,35 @@
+.avatarForm{
+  background-color: $background-off-white;
+  display: flex;
+  justify-content: center;
+}
+
+.avatarForm-body {
+  padding-top: 40px;
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatarForm-body-header {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.avatarForm-marginBottom {
+  margin-bottom: 20px;
+}
+
+.avatarForm-body-instruction{
+  text-align: center;
+}
+
+.avatarForm-body-avatar{
+  width: 150px;
+  height: 150px;
+}
+
+.avatarForm-icon{
+  font-size: 150px;
+}
