@@ -1,21 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const handleFile = props => {
-  return event => {
-    const file = event.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      const formData = new FormData();
-      formData.append("avatar", file);
-      props.setAvatar(formData);
-    };
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-  };
-};
-
 const AvatarForm = props => {
   const preview = props.currentUser.avatarUrl ? (
     <img
@@ -42,7 +27,7 @@ const AvatarForm = props => {
           <input
             className="avatarForm-body-input"
             type="file"
-            onChange={handleFile(props)}
+            onChange={props.handleFile(props)}
           />
         </label>
         <div className="avatarForm-body-orLine">
