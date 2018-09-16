@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { setAvatar } from "../../actions/session_actions";
-import { connect } from "react-redux";
 
 const handleFile = props => {
   return event => {
@@ -61,15 +59,4 @@ const AvatarForm = props => {
   );
 };
 
-const msp = ({ entities, session }) => ({
-  currentUser: entities.users[session.id]
-});
-
-const mdp = dispatch => ({
-  setAvatar: avatar => dispatch(setAvatar(avatar))
-});
-
-export default connect(
-  msp,
-  mdp
-)(AvatarForm);
+export default AvatarForm;
