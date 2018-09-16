@@ -5,6 +5,19 @@ const PATHS_TO_HIDE_LINKS = ["/welcome", "/signup"];
 
 const NavBar = props => {
   const loggedIn = Boolean(props.currentUser);
+  let avatar = null;
+  if (loggedIn) {
+    if (props.currentUser.avatarUrl) {
+      avatar = (
+        <img
+          className="navbar-avatar navbar-avatar-image"
+          src={props.currentUser.avatarUrl}
+        />
+      );
+    } else {
+      avatar = <span className="far fa-user-circle navbar-avatar" />;
+    }
+  }
   return (
     <header className="navbar">
       <div className="navbar-main">
@@ -25,7 +38,7 @@ const NavBar = props => {
                   <Link to="/signup">Sign Up</Link>
                 </li>
               )}
-              {loggedIn ? <li>{props.currentUser.name}</li> : null}
+              <li>{avatar}</li>
               {loggedIn ? (
                 <li>
                   <button onClick={props.logout}>logout</button>
