@@ -29,7 +29,7 @@
   font-size: 150px;
 }
 
-.avatarForm-avatar{
+.avatarForm-avatar {
   width: 150px;
   height: 150px;
 }
@@ -41,7 +41,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 3px
+  border-radius: 3px;
+  background-color: $wemeet-light-red;
+}
+
+.avatarForm-body-button:hover {
+  background-color: $wemeet-red;
 }
 .avatarForm-body-input {
   // Below from
@@ -53,9 +58,24 @@
   position: absolute;
 }
 
-.avatarForm-body-orLine{
+.avatarForm-body-orLine {
   height: 32px;
   width: 100%;
   z-index: 0;
-  border-bottom: 1px solid rgba(46,62,72,.12);
+  border-bottom: 1px solid rgba(46, 62, 72, 0.12);
+  position: relative;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.avatarForm-body-or {
+  position: relative;
+  top: 22px;
+  width: 55.41px;
+  background-color: $background-off-white;
+  text-align: center;
+}
+.avatarForm-body-skipButton {
+  color: #2e3e48;
 }

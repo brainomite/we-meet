@@ -47,9 +47,13 @@ const AvatarForm = props => {
             onChange={handleFile(props)}
           />
         </label>
-        <div className="avatarForm-body-orLine" />
-        <p className="avatarForm-body-or">Or</p>
-        <Link className="avatarForm-body-skipButton" to="/">
+        <div className="avatarForm-body-orLine">
+          <p className="avatarForm-body-or">Or</p>
+        </div>
+        <Link
+          className="avatarForm-body-skipButton avatarForm-marginBottom"
+          to="/"
+        >
           Skip for now
         </Link>
       </section>
