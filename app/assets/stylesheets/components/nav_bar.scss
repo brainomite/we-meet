@@ -23,6 +23,8 @@ ul.navbar-main-links {
 
 .navbar-main-links > li {
   padding-left: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-main-links-newgroup {
@@ -34,6 +36,7 @@ ul.navbar-main-links {
   height: 30px;
   width: 30px;
   font-size: 30px;
+  padding-right: 8px;
 }
 .navbar-avatar-image {
   border-radius: 999px;

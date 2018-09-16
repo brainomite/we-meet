@@ -9,13 +9,21 @@ const NavBar = props => {
   if (loggedIn) {
     if (props.currentUser.avatarUrl) {
       avatar = (
-        <img
-          className="navbar-avatar navbar-avatar-image"
-          src={props.currentUser.avatarUrl}
-        />
+        <li>
+          <img
+            className="navbar-avatar navbar-avatar-image"
+            src={props.currentUser.avatarUrl}
+          />
+          <i className="fas fa-caret-down"></i>
+        </li>
       );
     } else {
-      avatar = <span className="far fa-user-circle navbar-avatar" />;
+      avatar = (
+        <li>
+          <span className="far fa-user-circle navbar-avatar" />
+          <i className="fas fa-caret-down"></i>
+        </li>
+      );
     }
   }
   return (
@@ -38,7 +46,7 @@ const NavBar = props => {
                   <Link to="/signup">Sign Up</Link>
                 </li>
               )}
-              <li>{avatar}</li>
+              {avatar}
               {loggedIn ? (
                 <li>
                   <button onClick={props.logout}>logout</button>
