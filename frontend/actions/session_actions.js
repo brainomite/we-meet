@@ -57,7 +57,11 @@ export const loginDemoUser = () =>
 export const signup = user => {
   return dispatch => {
     const success = result => {
-      return dispatch(receiveCurrentUser(result));
+      dispatch(receiveCurrentUser(result));
+
+      // lets a return a resolved promise so
+      // that we can chain off of the state-change
+      return Promise.resolve(); // eslint-disable-line no-undef
     };
 
     const failure = errorResults => {

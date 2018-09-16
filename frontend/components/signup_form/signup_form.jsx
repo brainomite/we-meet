@@ -26,9 +26,7 @@ class SignupForm extends React.Component {
     const userObj = {
       user: this.state
     };
-    this.props.signup(userObj).then(() => {
-      setTimeout(() => this.props.history.push("/welcome"), 0);
-    });
+    this.props.signup(userObj).then(() => this.props.history.push("/welcome"));
   }
 
   render() {
