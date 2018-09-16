@@ -20,3 +20,13 @@ export const logout = () => {
     url: '/api/session',
   });
 };
+
+export const setAvatar = (avatar) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/avatar',
+    data: avatar,
+    contentType: false,
+    processData: false
+  });
+};

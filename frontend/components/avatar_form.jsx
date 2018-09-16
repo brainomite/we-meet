@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { setAvatar } from "./../actions/session_actions";
+import { connect } from "react-redux";
 
 class AvatarForm extends React.Component {
   constructor(props) {
@@ -13,8 +15,10 @@ class AvatarForm extends React.Component {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-
-      this.setState({photoFile: file, photoUrl: fileReader.result});
+      const formData = new FormData();
+      formData.append("avatar", file);
+      this.props.setAvatar(formData);
+      // this.setState({ photoFile: file, photoUrl: fileReader.result });
     };
     if (file) {
       fileReader.readAsDataURL(file);
@@ -22,8 +26,8 @@ class AvatarForm extends React.Component {
   }
 
   render() {
-    const preview = this.state.photoUrl ? (
-      <img src={this.state.photoUrl} />
+    const preview = this.props.currentUser.avatarUrl ? (
+      <img src={this.props.currentUser.avatarUrl} />
     ) : (
       <span className="far fa-user-circle" />
     );
@@ -32,12 +36,25 @@ class AvatarForm extends React.Component {
         <h1>Welcome!</h1>
         <p>Add a photo so other members know who you are.</p>
         {preview}
-        <input type="file" onChange={this.handleFile.bind(this)} />
+        <label>
+          Upload a photo
+          <input type="file" onChange={this.handleFile.bind(this)} />
+        </label>
         <p>Or</p>
         <Link to="/">Skip for now</Link>
       </main>
     );
   }
 }
+const msp = ({entities, session}) => ({
+  currentUser: entities.users[session.id]
+});
 
-export default AvatarForm;
+const mdp = dispatch => ({
+  setAvatar: avatar => dispatch(setAvatar(avatar))
+});
+
+export default connect(
+  msp,
+  mdp
+)(AvatarForm);

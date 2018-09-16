@@ -5,6 +5,12 @@ export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
+const resolved = () => {
+  // lets a return a resolved promise so
+  // that we can chain off of the state-change
+  return Promise.resolve(); // eslint-disable-line no-undef
+};
+
 const receiveSessionErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
@@ -58,10 +64,7 @@ export const signup = user => {
   return dispatch => {
     const success = result => {
       dispatch(receiveCurrentUser(result));
-
-      // lets a return a resolved promise so
-      // that we can chain off of the state-change
-      return Promise.resolve(); // eslint-disable-line no-undef
+      return resolved();
     };
 
     const failure = errorResults => {
@@ -83,5 +86,20 @@ export const logout = () => {
     };
 
     return SessionAPIUtil.logout().then(success, failure);
+  };
+};
+
+export const setAvatar = avatar => {
+  return dispatch => {
+    const success = result => {
+      dispatch(receiveCurrentUser(result));
+      return resolved();
+    };
+
+    const failure = errorResults => {
+      console.log(errorResults);
+    };
+
+    return SessionAPIUtil.setAvatar(avatar).then(success, failure);
   };
 };
