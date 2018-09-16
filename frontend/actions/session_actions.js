@@ -1,4 +1,5 @@
 import * as SessionAPIUtil from "./../util/session_api_util";
+import { openModal, closeModal } from './modal_actions';
 
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
@@ -99,7 +100,7 @@ export const setAvatar = avatar => {
     const failure = errorResults => {
       console.log(errorResults);
     };
-
+    dispatch(openModal('loading'));
     return SessionAPIUtil.setAvatar(avatar).then(success, failure);
   };
 };

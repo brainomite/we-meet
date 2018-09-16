@@ -8,6 +8,7 @@ const AvatarFormWithAvatar = props => {
         <img
           className="member-avatar avatarForm-avatar"
           src={props.currentUser.avatarUrl}
+          onLoad={props.closeModal}
         />
       </div>
       <label className="avatarForm-body-change avatarForm-marginBottom">

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { setAvatar } from "../../actions/session_actions";
+import { closeModal } from '../../actions/modal_actions';
 
 import AvatarForm from './avatar_form';
 
@@ -24,7 +25,8 @@ const msp = ({ entities, session }) => ({
 
 const mdp = dispatch => ({
   setAvatar: avatar => dispatch(setAvatar(avatar)),
-  handleFile: props => handleFile(props)
+  handleFile: props => handleFile(props),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(msp, mdp)(AvatarForm);
