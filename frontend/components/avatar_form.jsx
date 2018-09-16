@@ -20,7 +20,10 @@ const handleFile = props => {
 
 const AvatarForm = props => {
   const preview = props.currentUser.avatarUrl ? (
-    <img src={props.currentUser.avatarUrl} />
+    <img
+      className="member-avatar avatarForm-avatar"
+      src={props.currentUser.avatarUrl}
+    />
   ) : (
     <span className="far fa-user-circle avatarForm-icon" />
   );
@@ -33,8 +36,10 @@ const AvatarForm = props => {
         <p className="avatarForm-body-instruction avatarForm-marginBottom">
           Add a photo so other members know who you are.
         </p>
-        <div className="avatarForm-body-avatar">{preview}</div>
-        <label className="avatarForm-body-button">
+        <div className="avatarForm-body-avatar avatarForm-marginBottom">
+          {preview}
+        </div>
+        <label className="avatarForm-body-button confirm-button">
           Upload a photo
           <input
             className="avatarForm-body-input"
@@ -42,6 +47,7 @@ const AvatarForm = props => {
             onChange={handleFile(props)}
           />
         </label>
+        <div className="avatarForm-body-orLine" />
         <p className="avatarForm-body-or">Or</p>
         <Link className="avatarForm-body-skipButton" to="/">
           Skip for now

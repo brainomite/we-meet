@@ -1,4 +1,4 @@
-.avatarForm{
+.avatarForm {
   background-color: $background-off-white;
   display: flex;
   justify-content: center;
@@ -14,22 +14,48 @@
 .avatarForm-body-header {
   font-size: 28px;
   font-weight: 700;
-  text-align: center;
 }
 
 .avatarForm-marginBottom {
   margin-bottom: 20px;
 }
 
-.avatarForm-body-instruction{
-  text-align: center;
-}
-
-.avatarForm-body-avatar{
+.avatarForm-body-avatar {
   width: 150px;
   height: 150px;
 }
 
-.avatarForm-icon{
+.avatarForm-icon {
   font-size: 150px;
+}
+
+.avatarForm-avatar{
+  width: 150px;
+  height: 150px;
+}
+
+.avatarForm-body-button {
+  width: 100%;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px
+}
+.avatarForm-body-input {
+  // Below from
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Examples
+  // "opacity is used to hide the file input instead of visibility: hidden or
+  // display: none, because assistive technology interprets the latter two
+  // styles to mean the file input isn't interactive"
+  opacity: 0;
+  position: absolute;
+}
+
+.avatarForm-body-orLine{
+  height: 32px;
+  width: 100%;
+  z-index: 0;
+  border-bottom: 1px solid rgba(46,62,72,.12);
 }
