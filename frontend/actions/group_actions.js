@@ -44,3 +44,17 @@ export const fetchGroup = id => {
     groupAPIUtil.getGroup(id).then(success, failure);
   };
 };
+
+export const createGroup = data => {
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveGroup(result));
+    };
+
+    const failure = errorResults => {
+      console.log(errorResults);
+    };
+
+    groupAPIUtil.createGroup(data).then(success, failure);
+  };
+};

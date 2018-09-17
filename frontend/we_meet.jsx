@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<Root store={store} />, rootEl);
 });
 
-
 // for testing only - to be removed!
-import * as groupApiUtil from './util/group_api_util';
-import { fetchGroup, fetchGroups} from './actions/group_actions'
+import * as groupApiUtil from "./util/group_api_util";
+import { fetchGroup, fetchGroups, createGroup } from "./actions/group_actions";
 window.groupApiUtil = groupApiUtil;
-window.fetchGroup = fetchGroup
-window.fetchGroups = fetchGroups
+window.fetchGroup = fetchGroup;
+window.fetchGroups = fetchGroups;
+window.createGroup = createGroup;
