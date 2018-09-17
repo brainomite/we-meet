@@ -14,7 +14,7 @@
 
 require 'uri'
 class User < ApplicationRecord
-  validates :email, :password_digest,
+  validates :password_digest,
             :session_token, :name, :hometown_id, presence: true
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
