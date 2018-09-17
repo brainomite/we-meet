@@ -14,6 +14,12 @@ class NavBar extends React.Component {
     this.closeMenu = this.closeMenu.bind(this);
   }
 
+  componentDidUpdate(){
+    if (this.state.menu && !this.props.currentUser) {
+      this.setState({menu: null});
+    }
+  }
+
   openMenu() {
     this.setState({
       menu: (
