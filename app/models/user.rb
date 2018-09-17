@@ -46,6 +46,14 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :group_users,
+    class_name: :GroupUser,
+    foreign_key: :user_id
+
+  has_many :members,
+    through: :group_users,
+    source: :group
+
   private
 
   def ensure_session_token

@@ -10,4 +10,8 @@
 
 class MemberType < ApplicationRecord
   validates :title, presence: true, uniqueness: true
+
+  has_many :group_users,
+    class_name: :GroupUser,
+    foreign_key: :member_type_id
 end

@@ -16,6 +16,7 @@ file = File.open('db/seeding_files/users/Kermit_the_Frog.jpg')
 user.avatar.attach(io: file, filename: 'Kermit_the_Frog.jpg')
 
 MemberType.create title: "Organizer"
+MemberType.create title: "Regular Member"
 
 
 sleep 1 # Allow active storage time to purge files from s3.
