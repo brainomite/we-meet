@@ -20,3 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);
 });
+
+
+// for testing only - to be removed!
+import * as groupApiUtil from './util/group_api_util';
+window.groupApiUtil = groupApiUtil;
