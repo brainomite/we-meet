@@ -5,13 +5,13 @@
 #  id          :bigint(8)        not null, primary key
 #  name        :string           not null
 #  description :text             not null
-#  hometown_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  hometown    :string           not null
 #
 
 class Group < ApplicationRecord
-  validates :name, :description, :hometown_id, presence: true
+  validates :name, :description, :hometown, presence: true
   validates :description, length: { minimum: 50 }
 
   has_many :group_users,
