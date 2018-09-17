@@ -5,7 +5,7 @@ export default function groupReducer(state = {}, action) {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_GROUP:
-      return merge({}, state, action.payload.group)
+      return merge({}, state, action.payload.group);
     case RECEIVE_GROUPS:
       return action.groups;
     default:
