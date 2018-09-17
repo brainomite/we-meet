@@ -12,11 +12,14 @@
 #  updated_at      :datetime         not null
 #
 
+require 'uri'
 class User < ApplicationRecord
   validates :email, :password_digest,
             :session_token, :name, :hometown_id, presence: true
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP,
+                              message: "(%{value}) is not a valid email address"}
   before_validation :ensure_session_token
   attr_reader :password
 
