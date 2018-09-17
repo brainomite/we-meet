@@ -11,7 +11,7 @@
 #
 
 class Group < ApplicationRecord
-  validates :name, :description, presence: true
+  validates :name, :description, :hometown_id, presence: true
   validates :description, length: { minimum: 50 }
 
   has_many :group_users,
