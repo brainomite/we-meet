@@ -24,4 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // for testing only - to be removed!
 import * as groupApiUtil from './util/group_api_util';
+import { fetchGroup, fetchGroups} from './actions/group_actions'
 window.groupApiUtil = groupApiUtil;
+window.fetchGroup = fetchGroup
+window.fetchGroups = fetchGroups

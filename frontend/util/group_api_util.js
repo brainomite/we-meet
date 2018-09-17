@@ -11,3 +11,11 @@ export const getGroup = id => {
     url: `/api/groups/${id}`,
   });
 };
+
+export const createGroup = group => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/groups/`,
+    data: group
+  });
+};
