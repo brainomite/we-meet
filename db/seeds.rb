@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+
+# kermit
+user = User.create name: "Kermit the Frog", email: 'kermit@thefrog.com',
+                   password: 'misspiggy', hometown_id: 1
+file = File.open('db/seeding_files/users/Kermit_the_Frog.jpg')
+user.avatar.attach(io: file, filename: 'Kermit_the_Frog.jpg')
+
 sleep 1 # Allow active storage time to purge files from s3.
-User.create name: "Kermit the Frog", email: 'kermit@thefrog.com',
-            password: 'misspiggy', hometown_id: 1
