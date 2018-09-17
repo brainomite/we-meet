@@ -23,6 +23,10 @@ class Group < ApplicationRecord
     through: :group_users,
     source: :members
 
+  has_many :member_types,
+    through: :group_users,
+    source: :member_type
+
 
   accepts_nested_attributes_for :group_users
 end

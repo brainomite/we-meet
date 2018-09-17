@@ -1,1 +1,7 @@
-json.partial! "api/groups/groups", groups: @groups
+json.groups do
+  @groups.each do |group|
+    json.set! group.id.to_s.to_sym do
+      json.extract! group, :id, :name, :description, :hometown
+    end
+  end
+end
