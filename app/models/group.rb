@@ -14,14 +14,15 @@ class Group < ApplicationRecord
   validates :name, :description, presence: true
   validates :description, length: { minimum: 50 }
 
-  # ta q - i can change this to be more semantic
-  # has_many :group_users,
-  has_many :group_users
+  has_many :group_users,
     class_name: :GroupUser,
-    foreign_key: :group_id
+    foreign_key: :group_id,
+    inverse_of: :group
 
   has_many :members,
     through: :group_users,
-    soruce: :members
+    source: :members
 
+
+  accepts_nested_attributes_for :group_users
 end
