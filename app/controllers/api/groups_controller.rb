@@ -1,5 +1,7 @@
 class Api::GroupsController < ApplicationController
   def create
+    # possible n+1 query here, however there will only ever
+    # be 1 record in each joined table during the show
     if logged_in?
       @group = Group.new(group_params)
       @group.group_users_attributes = [
@@ -14,7 +16,7 @@ class Api::GroupsController < ApplicationController
         render json: @group.errors.full_messages, status: 422
       end
     elsif
-      render json: ['Must be signed in'], status: 422
+      render json: ['Must be signed in'], status: 401 # Unauthorized
     end
   end
 
