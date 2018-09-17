@@ -14,4 +14,12 @@ class MemberType < ApplicationRecord
   has_many :group_users,
     class_name: :GroupUser,
     foreign_key: :member_type_id
+
+  def self.organizer
+    self.find_by_title('Organizer')
+  end
+
+  def self.regular_member
+    self.find_by_title('Regular Member')
+  end
 end
