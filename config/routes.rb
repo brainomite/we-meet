@@ -6,6 +6,11 @@
 #                           POST   /api/users(.:format)                                                                     api/users#create {:format=>"json"}
 #                  api_user PATCH  /api/users/:id(.:format)                                                                 api/users#update {:format=>"json"}
 #                           PUT    /api/users/:id(.:format)                                                                 api/users#update {:format=>"json"}
+#                api_groups GET    /api/groups(.:format)                                                                    api/groups#index {:format=>"json"}
+#                           POST   /api/groups(.:format)                                                                    api/groups#create {:format=>"json"}
+#                 api_group GET    /api/groups/:id(.:format)                                                                api/groups#show {:format=>"json"}
+#                           PATCH  /api/groups/:id(.:format)                                                                api/groups#update {:format=>"json"}
+#                           PUT    /api/groups/:id(.:format)                                                                api/groups#update {:format=>"json"}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>"json"}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>"json"}
 #                api_avatar POST   /api/avatar(.:format)                                                                    api/avatars#create {:format=>"json"}
@@ -20,6 +25,9 @@ Rails.application.routes.draw do
   root "static_pages#root"
   namespace :api, defaults: { format: 'json' } do
     resources :users, only: [:index, :update, :create]
+    resources :groups, only: [:index, :update, :create, :show] do
+      resources :group_users, only: [:create]
+    end
     resource :session, only: [:create, :destroy]
     resource :avatar, only: [:create]
   end
