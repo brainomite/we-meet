@@ -44,7 +44,9 @@ class NavBar extends React.Component {
   render() {
     const loggedIn = Boolean(this.props.currentUser);
     let avatar = null;
+    let newGroupClass = "navbar-main-links-newgroup";
     if (loggedIn) {
+      newGroupClass += " navbar-main-links-newgroup-signedin";
       if (this.props.currentUser.avatarUrl) {
         avatar = (
           <li onClick={this.openMenu}>
@@ -77,7 +79,7 @@ class NavBar extends React.Component {
               this.props.location.pathname
             ) ? null : (
               <ul className="navbar-main-links">
-                <li className="navbar-main-links-newgroup">
+                <li className={newGroupClass}>
                   Start a new group
                 </li>
                 {loggedIn ? null : (

@@ -26,10 +26,19 @@ ul.navbar-main-links {
   display: flex;
   align-items: center;
 }
-
+.navbar-main-links a {
+  color: rgba(46,62,72,.6);
+  font-size: 14px;
+}
 .navbar-main-links-newgroup {
   border-right: 1px solid rgba(46, 62, 72, 0.12);
   padding-right: 16px;
+  color: #00a2c7;
+  font-size: 14px;
+  font-weight: 700;
+}
+.navbar-main-links-newgroup-signedin{
+  color: #F64060;
 }
 
 .navbar-avatar {
