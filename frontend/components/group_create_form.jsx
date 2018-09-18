@@ -10,6 +10,19 @@ class GroupCreateForm extends React.Component {
       description: "",
       hometown: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChange({ currentTarget }) {
+    this.setState({ [currentTarget.name]: currentTarget.value });
+  }
+
+  handleClick(evt) {
+    evt.preventDefault();
+    this.props.createGroup({
+      group: this.state
+    });
   }
 
   render() {
@@ -23,14 +36,28 @@ class GroupCreateForm extends React.Component {
           <div>
             <span>Step 1 of 3</span>
             <h2>What's your new Group's hometown?</h2>
-            <input type="text" name="hometown" value={this.state.hometown} />
+            <input
+              type="text"
+              onChange={this.handleChange}
+              name="hometown"
+              value={this.state.hometown}
+            />
           </div>
           <div>
             <span>Step 2 of 3</span>
             <h2>What will your group's name be?</h2>
-            <input type="text" name="name" value={this.state.name} />
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="name"
+              value={this.state.name}
+            />
             <h2>Describe who should join, and what your Group will do.</h2>
-            <textarea name="description" value={this.state.description} />
+            <textarea
+              onChange={this.handleChange}
+              name="description"
+              value={this.state.description}
+            />
           </div>
           <div>
             <span>Step 3 of 3</span>
@@ -42,7 +69,7 @@ class GroupCreateForm extends React.Component {
               <li>Put your members first</li>
             </ul>
             <h2>We don't review any groups.</h2>
-            <button>Agree & Continue</button>
+            <button onClick={this.handleClick}>Agree & Continue</button>
           </div>
         </section>
       </main>
