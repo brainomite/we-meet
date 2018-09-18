@@ -35,6 +35,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  top: 38px;
+}
+
+.splash-section h3 {
+  margin: 12px;
 }
 .splash-section-button {
   background-color: $wemeet-light-red;
@@ -46,6 +52,9 @@
   justify-content: center;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 16px;
+  padding: 12px;
+  box-sizing: border-box;
 }
 
 .splash-section-button:hover {
