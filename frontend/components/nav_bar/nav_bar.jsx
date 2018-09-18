@@ -80,7 +80,7 @@ class NavBar extends React.Component {
             ) ? null : (
               <ul className="navbar-main-links">
                 <li className={newGroupClass}>
-                  Start a new group
+                <Link to="/create">Start a new group</Link>
                 </li>
                 {loggedIn ? null : (
                   <li>
