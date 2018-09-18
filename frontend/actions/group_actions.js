@@ -2,6 +2,7 @@ import * as groupAPIUtil from "./../util/group_api_util";
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
+export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 
 const receiveGroup = payload => {
   return {
@@ -17,6 +18,13 @@ const receiveGroups = groups => {
   };
 };
 
+const receiveGroupErrors = errors => {
+  return {
+    type: RECEIVE_GROUP_ERRORS,
+    errors: errors.responseJSON
+  };
+};
+
 export const fetchGroups = () => {
   return dispatch => {
     const success = result => {
@@ -24,7 +32,7 @@ export const fetchGroups = () => {
     };
 
     const failure = errorResults => {
-      console.log(errorResults);
+      return dispatch(receiveGroupErrors(errorResults));
     };
 
     groupAPIUtil.getGroups().then(success, failure);
@@ -38,7 +46,7 @@ export const fetchGroup = id => {
     };
 
     const failure = errorResults => {
-      console.log(errorResults);
+      return dispatch(receiveGroupErrors(errorResults));
     };
 
     groupAPIUtil.getGroup(id).then(success, failure);
@@ -52,7 +60,7 @@ export const createGroup = data => {
     };
 
     const failure = errorResults => {
-      console.log(errorResults);
+      return dispatch(receiveGroupErrors(errorResults));
     };
 
     groupAPIUtil.createGroup(data).then(success, failure);
