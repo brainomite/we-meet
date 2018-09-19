@@ -29,6 +29,10 @@ class SignupForm extends React.Component {
     this.props.signup(userObj).then(() => this.props.history.push("/welcome"));
   }
 
+  componentWillUnmount(){
+    this.props.clearUserErrors();
+  }
+
   render() {
     return (
       <main className="signup">

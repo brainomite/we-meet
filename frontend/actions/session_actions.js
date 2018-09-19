@@ -1,8 +1,10 @@
 import * as SessionAPIUtil from "./../util/session_api_util";
-import { openModal, closeModal } from './modal_actions';
+import { openModal, closeModal } from "./modal_actions";
 
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
+export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
@@ -23,6 +25,18 @@ const receiveUserErrors = errors => {
   return {
     type: RECEIVE_USER_ERRORS,
     errors: errors.responseJSON
+  };
+};
+
+export const clearSessionErrors = () => {
+  return dispatch => {
+    return dispatch({ type: CLEAR_SESSION_ERRORS });
+  };
+};
+
+export const clearUserErrors = () => {
+  return dispatch => {
+    return dispatch({ type: CLEAR_USER_ERRORS });
   };
 };
 
@@ -100,7 +114,7 @@ export const setAvatar = avatar => {
     const failure = errorResults => {
       console.log(errorResults);
     };
-    dispatch(openModal('loading'));
+    dispatch(openModal("loading"));
     return SessionAPIUtil.setAvatar(avatar).then(success, failure);
   };
 };
