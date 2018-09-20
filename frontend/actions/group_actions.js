@@ -3,6 +3,15 @@ import * as groupAPIUtil from "./../util/group_api_util";
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
+export const CLEAR_GROUP_ERRORS = "CLEAR_GROUP_ERRORS";
+
+
+export const clearGroupErrors = () => {
+  return dispatch => {
+    return dispatch({ type: CLEAR_GROUP_ERRORS });
+  };
+};
+
 
 const receiveGroup = payload => {
   return {

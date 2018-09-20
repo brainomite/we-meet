@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createGroup } from "../actions/group_actions";
+import { createGroup, clearGroupErrors } from "../actions/group_actions";
+import FormErrors from "./form_errors/form_errors";
 
 class GroupCreateForm extends React.Component {
   constructor(props) {
@@ -25,9 +26,14 @@ class GroupCreateForm extends React.Component {
     });
   }
 
+  componentWillUnmount(){
+    this.props.clearGroupErrors();
+  }
+
   render() {
     return (
       <main>
+        <FormErrors errors={this.props.errors} />
         <header>
           <h1>Start a new group</h1>
           <p>We'll help you find the right people to make it happen</p>
@@ -76,9 +82,13 @@ class GroupCreateForm extends React.Component {
     );
   }
 }
-const msp = null;
+const msp = ({ errors }) => ({
+  errors: errors.group
+});
+
 const mdp = dispatch => ({
-  createGroup: group => dispatch(createGroup(group))
+  createGroup: group => dispatch(createGroup(group)),
+  clearGroupErrors: () => dispatch(clearGroupErrors())
 });
 
 export default connect(
