@@ -20,11 +20,6 @@ const App = () => {
         <AuthRoute path="/signup" component={SignupForm} />
         <AuthRoute path="/login" component={LoginForm} />
         <AuthRoute path="/welcome" requireLogin component={AvatarForm} />
-        <Route
-          path="/menutest"
-          exact
-          component={() => <main>{mainView}</main>}
-        />
       </Switch>
       <Footer />
     </div>
