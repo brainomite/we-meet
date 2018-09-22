@@ -7,7 +7,7 @@ import LoginForm from "./login_form/login_form_container";
 import AvatarForm from "./avatar_form/avatar_form_container";
 import GroupShow from "./group/group_show_container";
 import AuthRoute from "../util/route_util";
-import GroupCreatForm from "./group_create_form";
+import GroupCreateForm from "./group/group_create_form";
 import Footer from "./footer";
 import Modal from "./modal";
 
@@ -21,7 +21,7 @@ const App = () => {
         <AuthRoute path="/signup" component={SignupForm} />
         <AuthRoute path="/login" component={LoginForm} />
         <AuthRoute path="/welcome" requireLogin component={AvatarForm} />
-        <Route path="/create" component={GroupCreatForm} />
+        <Route path="/create" component={GroupCreateForm} />
         <Route path="/group/:groupId" component={GroupShow} />
         <Route path="/" component={Splash} />
       </Switch>
