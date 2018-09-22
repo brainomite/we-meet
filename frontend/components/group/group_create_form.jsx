@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createGroup, clearGroupErrors } from "../actions/group_actions";
-import FormErrors from "./form_errors/form_errors";
+import { createGroup, clearGroupErrors } from "../../actions/group_actions";
+import FormErrors from "./../form_errors/form_errors";
 
 class GroupCreateForm extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class GroupCreateForm extends React.Component {
     this.state = {
       name: "",
       description: "",
-      hometown: ""
+      hometown: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -21,12 +21,18 @@ class GroupCreateForm extends React.Component {
 
   handleClick(evt) {
     evt.preventDefault();
-    this.props.createGroup({
-      group: this.state
-    });
+    this.props
+      .createGroup({
+        group: this.state,
+      })
+      .then(action => {
+        console.log("action: ", action);
+        const groupId = Object.keys(action.payload.group)[0];
+        this.props.history.push(`/group/${groupId}`);
+      });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.clearGroupErrors();
   }
 
@@ -83,12 +89,12 @@ class GroupCreateForm extends React.Component {
   }
 }
 const msp = ({ errors }) => ({
-  errors: errors.group
+  errors: errors.group,
 });
 
 const mdp = dispatch => ({
   createGroup: group => dispatch(createGroup(group)),
-  clearGroupErrors: () => dispatch(clearGroupErrors())
+  clearGroupErrors: () => dispatch(clearGroupErrors()),
 });
 
 export default connect(
