@@ -26,7 +26,6 @@ class GroupCreateForm extends React.Component {
         group: this.state,
       })
       .then(action => {
-        console.log("action: ", action);
         const groupId = Object.keys(action.payload.group)[0];
         this.props.history.push(`/group/${groupId}`);
       });
