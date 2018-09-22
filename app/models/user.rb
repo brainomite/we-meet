@@ -50,7 +50,7 @@ class User < ApplicationRecord
     class_name: :GroupUser,
     foreign_key: :user_id
 
-  has_many :members,
+  has_many :groups,
     through: :group_users,
     source: :group
 
