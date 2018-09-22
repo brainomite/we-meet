@@ -5,6 +5,7 @@ import Splash from "./splash";
 import SignupForm from "./signup_form/signup_form_container";
 import LoginForm from "./login_form/login_form_container";
 import AvatarForm from "./avatar_form/avatar_form_container";
+import GroupShow from "./group/group_show_container";
 import AuthRoute from "../util/route_util";
 import GroupCreatForm from "./group_create_form";
 import Footer from "./footer";
@@ -21,6 +22,7 @@ const App = () => {
         <AuthRoute path="/login" component={LoginForm} />
         <AuthRoute path="/welcome" requireLogin component={AvatarForm} />
         <Route path="/create" component={GroupCreatForm} />
+        <Route path="/group/:groupId" component={GroupShow} />
         <Route path="/" component={Splash} />
       </Switch>
       <Footer />
