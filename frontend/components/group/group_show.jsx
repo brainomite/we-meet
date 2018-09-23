@@ -5,8 +5,14 @@ class GroupShow extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchGroup(this.props.match.params.groupId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.groupId !== nextProps.match.params.groupId) {
+      this.props.fetchGroup(nextProps.match.params.groupId);
+    }
   }
 
   render() {
