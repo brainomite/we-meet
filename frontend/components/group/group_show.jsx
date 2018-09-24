@@ -23,6 +23,9 @@ class GroupShow extends React.Component {
           <div>name: {this.props.group.name}</div>
           <div>description: {this.props.group.description}</div>
           <div>hometown: {this.props.group.hometown}</div>
+          <button className="confirm-button">Join</button>
+          <br />
+          <button className="confirm-button">Leave</button>
         </section>
       </main>
     );
