@@ -111,10 +111,7 @@ export const setAvatar = avatar => {
       return resolved();
     };
 
-    const failure = errorResults => {
-      console.log(errorResults);
-    };
     dispatch(openModal("loading"));
-    return SessionAPIUtil.setAvatar(avatar).then(success, failure);
+    return SessionAPIUtil.setAvatar(avatar).then(success);
   };
 };
