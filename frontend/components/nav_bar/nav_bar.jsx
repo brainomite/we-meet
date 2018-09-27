@@ -8,21 +8,40 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: null
+      hideMenu: true,
     };
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     if (this.state.menu && !this.props.currentUser) {
-      this.setState({menu: null});
+      this.setState({ menu: null });
     }
   }
 
-  openMenu() {
-    this.setState({
-      menu: (
+  componentDidUpdate(prevProps) {
+    const oldPath = prevProps.location.pathname;
+    const curPath = this.props.location.pathname;
+    const curLoggedIn = this.props.isLoggedIn;
+    const oldLoggedIn = prevProps.isLoggedIn;
+
+    if (!this.state.hideMenu && curLoggedIn !== oldLoggedIn) {
+      this.closeMenu();
+    }
+
+    if (curLoggedIn && oldPath !== curPath) {
+      // console.log("Path changed!");
+      if (!this.state.hideMenu) this.closeMenu();
+      // todo: we need to fetch current userdata
+    }
+  }
+
+  menu() {
+    if (this.state.hideMenu) {
+      return null;
+    } else {
+      return (
         <NavBarMenu
           closeMenu={this.closeMenu}
           logout={this.props.logout}
@@ -30,23 +49,30 @@ class NavBar extends React.Component {
           push={this.props.history.push}
           pathname={this.props.location.pathname}
         />
-      )
+      );
+    }
+  }
+
+  openMenu() {
+    this.setState({
+      hideMenu: false,
     });
   }
 
   closeMenu(evt) {
-    evt.stopPropagation();
+    if (evt) evt.stopPropagation();
     this.setState({
-      menu: null
+      hideMenu: true,
     });
   }
 
   render() {
-    const loggedIn = Boolean(this.props.currentUser);
+    const { isLoggedIn } = this.props;
     let avatar = null;
     let newGroupClass = "navbar-main-links-newgroup";
-    if (loggedIn) {
-      if (this.props.location.pathname === "/") newGroupClass += " navbar-main-links-newgroup-signedin";
+    if (isLoggedIn) {
+      if (this.props.location.pathname === "/")
+        newGroupClass += " navbar-main-links-newgroup-signedin";
       if (this.props.currentUser.avatarUrl) {
         avatar = (
           <li onClick={this.openMenu}>
@@ -55,7 +81,7 @@ class NavBar extends React.Component {
               src={this.props.currentUser.avatarUrl}
             />
             <span className="fas fa-caret-down" />
-            {this.state.menu}
+            {this.menu()}
           </li>
         );
       } else {
@@ -63,7 +89,7 @@ class NavBar extends React.Component {
           <li onClick={this.openMenu}>
             <span className="far fa-user-circle navbar-avatar" />
             <span className="fas fa-caret-down" />
-            {this.state.menu}
+            {this.menu()}
           </li>
         );
       }
@@ -80,14 +106,14 @@ class NavBar extends React.Component {
             ) ? null : (
               <ul className="navbar-main-links">
                 <li className={newGroupClass}>
-                <Link to="/create">Start a new group</Link>
+                  <Link to="/create">Start a new group</Link>
                 </li>
-                {loggedIn ? null : (
+                {isLoggedIn ? null : (
                   <li>
                     <Link to="/login">Log In</Link>
                   </li>
                 )}
-                {loggedIn ? null : (
+                {isLoggedIn ? null : (
                   <li>
                     <Link to="/signup">Sign Up</Link>
                   </li>

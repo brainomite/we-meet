@@ -2,10 +2,11 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions.js";
 import { withRouter } from "react-router-dom";
 import NavBar from "./nav_bar.jsx";
-import { getCurrentUser } from "../../reducers/selectors";
+import { getCurrentUser, getIsLoggedIn } from "../../reducers/selectors";
 
 const msp = state => ({
   currentUser: getCurrentUser(state),
+  isLoggedIn: getIsLoggedIn(state),
 });
 
 const mdp = dispatch => ({

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Splash from "./splash";
 import GroupIndex from "./group/group_index";
-import { getCurrentUser } from "../../reducers/selectors";
+import { getCurrentUser } from "../reducers/selectors";
 
 const SplashOrGroup = props => {
   if (props.currentUser) {
