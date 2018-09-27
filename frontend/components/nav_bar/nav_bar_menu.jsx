@@ -1,12 +1,25 @@
 import React from "react";
 
-const NavBarMenu = ({ closeMenu, currentUser, logout, push, pathname }) => {
+const NavBarMenu = ({
+  closeMenu,
+  currentUser,
+  logout,
+  push,
+  pathname,
+  userGroups,
+}) => {
+  console.log("userGroups: ", userGroups);
   const root = "/";
   return (
     <div className="navbar-menu-background" onClick={closeMenu}>
       <div className="navbar-menu-child" onClick={evt => evt.stopPropagation()}>
         <nav className="navbar-menu-body">
-          <ul>
+          <ul className="navbar-menu-body-groups">
+            {userGroups.map(group => {
+              return <li>{group.name}</li>;
+            })}
+          </ul>
+          <ul className="navbar-menu-body-admin">
             <li className="navbar-menu-name">{currentUser.name}</li>
             <li
               className="navbar-menu-logout"

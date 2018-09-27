@@ -48,6 +48,7 @@ class NavBar extends React.Component {
           currentUser={this.props.currentUser}
           push={this.props.history.push}
           pathname={this.props.location.pathname}
+          userGroups={this.props.userGroups}
         />
       );
     }
