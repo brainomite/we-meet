@@ -13,6 +13,7 @@ class SignupForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoClick = this.handleDemoClick.bind(this);
   }
 
   handleChange(event) {
@@ -29,7 +30,12 @@ class SignupForm extends React.Component {
     this.props.signup(userObj).then(() => this.props.history.push("/welcome"));
   }
 
-  componentWillUnmount(){
+  handleDemoClick(event) {
+    event.preventDefault();
+    this.props.loginDemoUser();
+  }
+
+  componentWillUnmount() {
     this.props.clearUserErrors();
   }
 
@@ -98,7 +104,7 @@ class SignupForm extends React.Component {
               <div className="signup-buffer">
                 <button
                   className="signup-form-footer-demo demo-button"
-                  onClick={this.props.loginDemoUser}
+                  onClick={this.handleDemoClick}
                 >
                   Login with the Demo User
                 </button>
