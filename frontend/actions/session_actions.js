@@ -40,10 +40,10 @@ const logoutCurrentUser = () => {
   };
 };
 
-const receiveCurrentUser = currentUser => {
+const receiveCurrentUser = payload => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user: currentUser,
+    payload,
   };
 };
 
