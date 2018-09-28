@@ -8,7 +8,6 @@ const NavBarMenu = ({
   pathname,
   userGroups,
 }) => {
-  console.log("userGroups: ", userGroups);
   const root = "/";
   return (
     <div className="navbar-menu-background" onClick={closeMenu}>
@@ -16,7 +15,7 @@ const NavBarMenu = ({
         <nav className="navbar-menu-body">
           <ul className="navbar-menu-body-groups">
             {userGroups.map(group => {
-              return <li>{group.name}</li>;
+              return <li key={group.id}>{group.name}</li>;
             })}
           </ul>
           <ul className="navbar-menu-body-admin">
