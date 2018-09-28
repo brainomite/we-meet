@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { setAvatar } from "../../actions/session_actions";
 import { closeModal } from "../../actions/modal_actions";
-import { getCurrentUser } from "../../reducers/selectors";
+import { selectCurrentUser } from "../../reducers/selectors";
 import AvatarForm from "./avatar_form";
 
 const handleFile = props => {
@@ -20,7 +20,7 @@ const handleFile = props => {
 };
 
 const msp = state => ({
-  currentUser: getCurrentUser(state),
+  currentUser: selectCurrentUser(state),
 });
 
 const mdp = dispatch => ({

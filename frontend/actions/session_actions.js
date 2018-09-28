@@ -107,3 +107,13 @@ export const setAvatar = avatar => {
     return SessionAPIUtil.setAvatar(avatar).then(success);
   };
 };
+
+export const getCurrentUser = userId => {
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveCurrentUser(result));
+    };
+
+    return SessionAPIUtil.getUser(userId).then(success);
+  };
+};

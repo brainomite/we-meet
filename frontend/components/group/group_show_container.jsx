@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { fetchGroup } from "../../actions/group_actions";
 import GroupShow from "./group_show";
-import { getCurrentUser } from "../../reducers/selectors";
+import { selectCurrentUser } from "../../reducers/selectors";
 
 const DEFAULT_GROUP = {
   name: "",
@@ -14,7 +14,7 @@ const DEFAULT_GROUP = {
 
 const msp = (state, ownProps) => ({
   group: state.entities.groups[ownProps.match.params.groupId] || DEFAULT_GROUP,
-  currentUser: getCurrentUser(state),
+  currentUser: selectCurrentUser(state),
 });
 
 const mdp = dispatch => ({

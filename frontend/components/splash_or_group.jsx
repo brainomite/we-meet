@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Splash from "./splash";
 import GroupIndex from "./group/group_index";
-import { getCurrentUser } from "../reducers/selectors";
+import { selectCurrentUser } from "../reducers/selectors";
 
 const SplashOrGroup = props => {
   if (props.currentUser) {
@@ -13,7 +13,7 @@ const SplashOrGroup = props => {
 };
 
 const msp = state => ({
-  currentUser: getCurrentUser(state),
+  currentUser: selectCurrentUser(state),
 });
 
 export default connect(msp)(SplashOrGroup);

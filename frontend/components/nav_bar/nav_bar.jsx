@@ -20,6 +20,12 @@ class NavBar extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.isLoggedIn) {
+      this.props.getCurrentUser(this.props.currentUser.id);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     const oldPath = prevProps.location.pathname;
     const curPath = this.props.location.pathname;
@@ -33,7 +39,9 @@ class NavBar extends React.Component {
     if (curLoggedIn && oldPath !== curPath) {
       // console.log("Path changed!");
       if (!this.state.hideMenu) this.closeMenu();
-      // todo: we need to fetch current userdata
+      if (this.props.isLoggedIn) {
+        this.props.getCurrentUser(this.props.currentUser.id);
+      }
     }
   }
 

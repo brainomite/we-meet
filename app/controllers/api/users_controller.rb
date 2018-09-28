@@ -25,7 +25,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    if logged_in? and current_user.id == params(:id)
+    if logged_in? && current_user.id.to_s == params[:id]
+      @user = current_user
       render :show
     elsif logged_in?
       render json: ["Your admin-fu is too low, forbidden."], status: 403
