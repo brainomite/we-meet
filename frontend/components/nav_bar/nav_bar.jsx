@@ -109,7 +109,7 @@ class NavBar extends React.Component {
           <Link to="/" className="logo">
             WeMeet
           </Link>
-          <nav>
+          <nav className="navbar-main-nav">
             {PATHS_TO_HIDE_LINKS.includes(
               this.props.location.pathname
             ) ? null : (

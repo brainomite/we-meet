@@ -17,6 +17,10 @@ header.navbar {
   background-color: $background-white;
 }
 
+.navbar-main-nav {
+  display: flex;
+}
+
 ul.navbar-main-links {
   display: flex;
   flex-direction: row;
