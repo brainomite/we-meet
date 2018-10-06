@@ -14,9 +14,12 @@ class GroupShow extends React.Component {
       this.props.fetchGroup(nextProps.match.params.groupId);
     }
   }
-
+  // src={window.wemeetAssets["icon_padlock.gif"]
   render() {
     const group = this.props.group;
+    const imgStyleObj = {
+      backgroundImage: `url(${window.wemeetAssets.defaultGroupImage})`,
+    }
     // todo: fix mock
     // const memberCount =  group.member_ids.length;
     const memberCount = 2;
@@ -25,7 +28,7 @@ class GroupShow extends React.Component {
       <main className="group">
         <header className="group-header">
           <div className="group-header-container">
-            <div className="group-header-image" />
+            <div className="group-header-image" style={imgStyleObj}/>
             <div>
               <h1>{group.name}</h1>
               <ul>
