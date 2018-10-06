@@ -28,8 +28,10 @@ class GroupShow extends React.Component {
       <main className="group">
         <header className="group-header">
           <div className="group-header-container">
-            <div className="group-header-image" style={imgStyleObj}/>
             <div>
+            <div className="group-header-image" style={imgStyleObj}/>
+            </div>
+            <section>
               <h1>{group.name}</h1>
               <ul>
                 <li>{group.hometown}</li>
@@ -37,7 +39,7 @@ class GroupShow extends React.Component {
                   {memberCount} {memberOrMember}
                 </li>
               </ul>
-            </div>
+            </section>
           </div>
         </header>
         <section>
