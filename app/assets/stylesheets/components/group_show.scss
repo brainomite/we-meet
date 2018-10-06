@@ -1,0 +1,28 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.group-header-container {
+  width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header.group-header {
+  height: 377.5px;
+}
+
+.group-header-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+}
+
+.group-header-image {
+  background-color: green;
+  width: 600px;
+  height: 337px;
+  border-radius: 8px;
+}
