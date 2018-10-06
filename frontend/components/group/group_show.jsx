@@ -19,7 +19,7 @@ class GroupShow extends React.Component {
     const group = this.props.group;
     const imgStyleObj = {
       backgroundImage: `url(${window.wemeetAssets.defaultGroupImage})`,
-    }
+    };
     // todo: fix mock
     // const memberCount =  group.member_ids.length;
     const memberCount = 2;
@@ -29,7 +29,7 @@ class GroupShow extends React.Component {
         <header className="group-header">
           <div className="group-header-container">
             <div>
-            <div className="group-header-image" style={imgStyleObj}/>
+              <div className="group-header-image" style={imgStyleObj} />
             </div>
             <section>
               <h1>{group.name}</h1>
@@ -42,13 +42,23 @@ class GroupShow extends React.Component {
             </section>
           </div>
         </header>
+        <nav id="group-nav">
+          <div>
+            <ul>
+              <li>About</li>
+              <li>members</li>
+            </ul>
+            <section>
+              <button className="confirm-button">Join</button>
+              <br />
+              <button className="confirm-button">Leave</button>
+            </section>
+          </div>
+        </nav>
         <section>
           <div>name: {group.name}</div>
           <div>description: {group.description}</div>
           <div>hometown: {group.hometown}</div>
-          <button className="confirm-button">Join</button>
-          <br />
-          <button className="confirm-button">Leave</button>
         </section>
       </main>
     );
