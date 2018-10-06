@@ -23,12 +23,33 @@ header.group-header {
     padding-left: 20px;
     flex-grow: 2;
     flex-basis: 0;
+    max-width: 418.31px;
   }
-  > div{
+  > div {
     flex-grow: 3;
     flex-basis: 0;
     width: 621.69px;
     max-width: 621.69px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $black-text;
+    margin-bottom: 10px;
+  }
+  ul {
+    display: flex;
+  }
+  li {
+    font-size: 14px;
+    color: $black-text;
+    + li {
+      padding-left: 10px;
+    }
+    + li:before {
+      padding-right: 10px;
+      content: "·";
+    }
   }
 }
 
