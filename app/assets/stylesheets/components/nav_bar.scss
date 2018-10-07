@@ -7,7 +7,8 @@
 header.navbar {
   height: 86px;
   width: 100%;
-  border-bottom: 1px solid rgba(46,62,72,.12);
+  border-bottom: 2px solid $wemeet-gray-black;
+  background-color: $background-white;
 }
 
 .navbar-main {
