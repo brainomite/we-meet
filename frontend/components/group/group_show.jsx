@@ -16,15 +16,24 @@ class GroupShow extends React.Component {
   }
   render() {
     const { groupHeader: GroupHeader, groupNav: GroupNav } = this;
-    const group = this.props.group;
+    const { group } = this.props;
     return (
       <main className="group">
         <GroupHeader />
         <GroupNav />
-        <section>
-          <div>name: {group.name}</div>
-          <div>description: {group.description}</div>
-          <div>hometown: {group.hometown}</div>
+        <section id="group-main">
+          <div>
+            <div>
+              <section className="group-about">
+                <h2>What we're about</h2>
+                <p>{group.description}</p>
+              </section>
+            </div>
+            <section>
+              <span><h2>Upcoming events</h2></span>
+              <div>No upcoming events</div>
+            </section>
+          </div>
         </section>
       </main>
     );

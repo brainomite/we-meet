@@ -75,6 +75,8 @@ header.group-header {
     display: flex;
     height: 69px;
     align-items: center;
+    box-sizing: border-box;
+    padding: 0 20px;
     > ul {
       display: flex;
       @include group-left-3();
@@ -105,5 +107,53 @@ header.group-header {
         background-color: $wemeet-red;
       }
     }
+  }
+}
+#group-main {
+  background-color: #f6f7f8;
+  > div {
+    @include group-center();
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    > div {
+      @include group-left-3();
+    }
+    > section {
+      // display: flex;
+      @include group-right-2();
+      // align-items: center;
+    }
+    > section {
+      margin-top: 40px;
+      > span {
+        > h2 {
+          padding-bottom: 20px;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+      > div {
+        border: 3px dashed $wemeet-gray-black;
+        border-radius: 8px;
+        box-sizing: border-box;
+        height: 206px;
+        width: 320px;
+        padding: 20px;
+      }
+    }
+  }
+}
+
+.group-about {
+  margin-top: 40px;
+  > h2 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 28px;
   }
 }
