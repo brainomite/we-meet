@@ -1,4 +1,5 @@
 import React from "react";
+import { groupImage } from '../../util/group_util';
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class GroupShow extends React.Component {
     const memberCount = 2;
     const memberOrMember = memberCount === 1 ? "member" : "members";
     const imgStyleObj = {
-      backgroundImage: `url(${window.wemeetAssets.defaultGroupImage})`,
+      backgroundImage: `url(${groupImage(group)})`,
     };
     return (
       <header className="group-header">
