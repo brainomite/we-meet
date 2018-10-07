@@ -50,7 +50,6 @@ class GroupShow extends React.Component {
             </ul>
             <section>
               <button className="confirm-button">Join</button>
-              <br />
               <button className="confirm-button">Leave</button>
             </section>
           </div>
