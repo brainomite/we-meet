@@ -67,17 +67,42 @@ header.group-header {
   border-radius: 8px;
 }
 #group-nav {
+  border-top: 1px solid $wemeet-gray-black;
   height: 70px;
   > div {
     @include group-center();
     display: flex;
+    height: 69px;
+    align-items: center;
     > ul {
       display: flex;
       @include group-left-3();
+      li {
+        padding-right: 40px;
+        font-size: 14px;
+      }
     }
     > section {
       display: flex;
-    @include group-right-2();
-  }
+      @include group-right-2();
+      align-items: center;
+      button {
+        width: 162.91px;
+        height: 38px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        align-items: center;
+        border-radius: 4px;
+        background-color: $wemeet-light-red;
+        + button {
+          margin-left: 20px;
+        }
+      }
+      button:hover {
+        background-color: $wemeet-red;
+      }
+    }
   }
 }
