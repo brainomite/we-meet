@@ -29,17 +29,19 @@ class GroupShow extends React.Component {
         <header className="group-header">
           <div className="group-header-container">
             <div>
-              <div className="group-header-image" style={imgStyleObj} />
+              <div>
+                <div className="group-header-image" style={imgStyleObj} />
+              </div>
+              <section>
+                <h1>{group.name}</h1>
+                <ul>
+                  <li>{group.hometown}</li>
+                  <li>
+                    {memberCount} {memberOrMember}
+                  </li>
+                </ul>
+              </section>
             </div>
-            <section>
-              <h1>{group.name}</h1>
-              <ul>
-                <li>{group.hometown}</li>
-                <li>
-                  {memberCount} {memberOrMember}
-                </li>
-              </ul>
-            </section>
           </div>
         </header>
         <nav id="group-nav">

@@ -12,7 +12,7 @@
 
 header.group-header {
   height: 377.5px;
-  margin: 0 20px 20px 20px;
+  margin: 0 20px;
 }
 
 @mixin group-left-3 {
@@ -29,33 +29,34 @@ header.group-header {
 }
 .group-header-container {
   @include group-center();
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  section {
-    @include group-right-2();
-  }
   > div {
-    @include group-left-3();
-  }
-  h1 {
-    font-size: 32px;
-    font-weight: 700;
-    color: $black-text;
-    margin-bottom: 10px;
-  }
-  ul {
+    padding: 20px;
     display: flex;
-  }
-  li {
-    font-size: 14px;
-    color: $black-text;
-    + li {
-      padding-left: 10px;
+    section {
+      @include group-right-2();
     }
-    + li:before {
-      padding-right: 10px;
-      content: "·";
+    > div {
+      @include group-left-3();
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: $black-text;
+      margin-bottom: 10px;
+    }
+    ul {
+      display: flex;
+    }
+    li {
+      font-size: 14px;
+      color: $black-text;
+      + li {
+        padding-left: 10px;
+      }
+      + li:before {
+        padding-right: 10px;
+        content: "·";
+      }
     }
   }
 }
