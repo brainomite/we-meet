@@ -116,17 +116,20 @@ header.group-header {
     box-sizing: border-box;
     padding: 0 20px;
     display: flex;
+    justify-content: space-between;
     > div {
       @include group-left-3();
     }
     > section {
-      // display: flex;
       @include group-right-2();
-      // align-items: center;
     }
     > section {
       margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
       > span {
+        width: 320px;
         > h2 {
           padding-bottom: 20px;
           font-size: 20px;
