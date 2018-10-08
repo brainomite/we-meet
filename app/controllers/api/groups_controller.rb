@@ -27,6 +27,11 @@ class Api::GroupsController < ApplicationController
   def show
     @group = Group.includes(:members, :group_users, :member_types)
       .find_by_id(params[:id])
+    if @group
+      render :show
+    elsif
+      render json:['Group not found'], status: 404
+    end
   end
 
   def update
