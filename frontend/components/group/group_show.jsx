@@ -7,12 +7,17 @@ class GroupShow extends React.Component {
     this.groupHeader = this.groupHeader.bind(this);
     this.groupNav = this.groupNav.bind(this);
   }
+  fetchGroup(groupId) {
+    this.props.fetchGroup(groupId).then(undefined, error => {
+      this.props.history.replace("/");
+    });
+  }
   componentDidMount() {
-    this.props.fetchGroup(this.props.match.params.groupId);
+    this.fetchGroup(this.props.match.params.groupId);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.groupId !== nextProps.match.params.groupId) {
-      this.props.fetchGroup(nextProps.match.params.groupId);
+      this.fetchGroup(nextProps.match.params.groupId);
     }
   }
   render() {
