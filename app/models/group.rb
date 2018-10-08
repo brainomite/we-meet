@@ -17,7 +17,8 @@ class Group < ApplicationRecord
   has_many :group_users,
     class_name: :GroupUser,
     foreign_key: :group_id,
-    inverse_of: :group
+    inverse_of: :group,
+    dependent: :destroy
 
   has_many :members,
     through: :group_users,

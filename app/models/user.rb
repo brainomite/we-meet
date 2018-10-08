@@ -48,7 +48,8 @@ class User < ApplicationRecord
 
   has_many :group_users,
     class_name: :GroupUser,
-    foreign_key: :user_id
+    foreign_key: :user_id,
+    dependent: :destroy
 
   has_many :groups,
     through: :group_users,
