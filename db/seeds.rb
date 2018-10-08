@@ -42,7 +42,7 @@ end
 
 def gen_email_from_name(name)
   prefix = "#{name[0]}#{name.split(' ').last}"
-  Faker::Internet.unique.email('Nancy')
+  Faker::Internet.unique.email(prefix)
 end
 
 def get_avatar(avatars, is_male)
@@ -82,7 +82,7 @@ used_user_names = Set.new
   is_male = Faker::Boolean.boolean
   name = get_name(used_user_names, is_male)
   user = User.create name: name,
-    email: Faker::Internet.unique.safe_email,
+    email: gen_email_from_name(name),
     password: 'hunter2', hometown_id: 1
 
   avatar = open(get_avatar(avatars, is_male))
