@@ -1,5 +1,5 @@
 import React from "react";
-import { groupImage } from '../../util/group_util';
+import { groupImage } from "../../util/group_util";
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -31,7 +31,9 @@ class GroupShow extends React.Component {
               </section>
             </div>
             <section>
-              <span><h2>Upcoming events</h2></span>
+              <span>
+                <h2>Upcoming events</h2>
+              </span>
               <div>No upcoming events</div>
             </section>
           </div>
@@ -41,9 +43,7 @@ class GroupShow extends React.Component {
   }
   groupHeader() {
     const group = this.props.group;
-    // todo: fix mock
-    // const memberCount =  group.member_ids.length;
-    const memberCount = 2;
+    const memberCount = group.member_ids ? group.member_ids.length : "?";
     const memberOrMember = memberCount === 1 ? "member" : "members";
     const imgStyleObj = {
       backgroundImage: `url(${groupImage(group)})`,
