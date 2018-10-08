@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
+
 # Deterministicly random
 Faker::Config.random = Random.new(42)
 
@@ -20,8 +21,8 @@ avatars = []
 (1..114).each { |num|  avatars << base_avatar_url + "female/#{num}.png" }
 avatars.shuffle
 
-organizer = MemberType.create title: "Organizer"
-regular_member = MemberType.create title: "Regular Member"
+organizer = MemberType.create id: 1,title: "Organizer"
+regular_member = MemberType.create id: 5, title: "Regular Member"
 
 # users
 users = []
@@ -39,7 +40,6 @@ users << kermit
     password: 'hunter2', hometown_id: 1
   slug = Faker::IDNumber.unique.invalid
   background = "bg#{Faker::Number.between(1, 2)}"
-  # avatar = open(Faker::Avatar.image(slug, "260x260", "jpg", nil, background))
   avatar = open(avatars.pop)
   file_name = Faker::File.unique.file_name('',nil,'jpg','')
   user.avatar.attach(io: avatar, filename: file_name)

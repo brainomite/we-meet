@@ -12,6 +12,7 @@
 
 class GroupUser < ApplicationRecord
   validates :group_id, uniqueness: {scope: :user_id}
+  before_validation :default_values
 
   belongs_to :member_type,
     class_name: :MemberType,
@@ -26,4 +27,9 @@ class GroupUser < ApplicationRecord
     class_name: :User,
     foreign_key: :user_id
 
+  private
+
+  def default_values
+    self.member_type_id ||= 5 # "Regular Member"
+  end
 end
