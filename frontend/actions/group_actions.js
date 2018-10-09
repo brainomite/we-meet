@@ -73,3 +73,31 @@ export const createGroup = data => {
     return groupAPIUtil.createGroup(data).then(success, failure);
   };
 };
+
+export const joinGroup = id => {
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveGroup(result));
+    };
+
+    // const failure = errorResults => {
+    //   return dispatch(receiveGroupErrors(errorResults));
+    // };
+
+    return groupAPIUtil.joinGroup(id).then(success);
+  };
+};
+
+export const leaveGroup = id => {
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveGroup(result));
+    };
+
+    // const failure = errorResults => {
+    //   return dispatch(receiveGroupErrors(errorResults));
+    // };
+
+    return groupAPIUtil.leaveGroup(id).then(success);
+  };
+};

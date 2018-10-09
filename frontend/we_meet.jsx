@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.currentUser) {
     const preloadedState = {
       entities: {
-        users: { [window.currentUser.id]: window.currentUser }
+        users: { [window.currentUser.id]: window.currentUser },
       },
-      session: { id: window.currentUser.id }
+      session: { id: window.currentUser.id },
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
@@ -19,12 +19,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);
+  // for testing only - to be removed!
+  window.dispatch = store.dispatch;
 });
 
 // for testing only - to be removed!
 import * as groupApiUtil from "./util/group_api_util";
-import { fetchGroup, fetchGroups, createGroup } from "./actions/group_actions";
+import {
+  fetchGroup,
+  fetchGroups,
+  createGroup,
+  joinGroup,
+  leaveGroup,
+} from "./actions/group_actions";
 window.groupApiUtil = groupApiUtil;
 window.fetchGroup = fetchGroup;
 window.fetchGroups = fetchGroups;
 window.createGroup = createGroup;
+window.joinGroup = joinGroup;
+window.leaveGroup = leaveGroup;

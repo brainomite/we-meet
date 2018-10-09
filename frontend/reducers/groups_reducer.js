@@ -6,7 +6,13 @@ export default function groupReducer(state = {}, action) {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_GROUP:
-      return merge({}, state, action.payload.group);
+      const newState = merge({}, state);
+      // merge when merging arrays keeps the superset! Not appropriate here
+      for (let key in action.payload.group) {
+        if (action.payload.group.hasOwnProperty(key))
+          newState[key] = action.payload.group[key];
+      }
+      return newState;
     case RECEIVE_GROUPS:
       return action.groups;
     case RECEIVE_CURRENT_USER:
