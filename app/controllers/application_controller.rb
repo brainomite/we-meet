@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
     session[:session_token] = nil
   end
 
+  def find_full_group(id)
+    Group.includes(:members, :group_users, :member_types)
+      .find_by_id(id)
+  end
+
 end

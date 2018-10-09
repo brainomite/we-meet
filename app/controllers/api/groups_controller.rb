@@ -25,8 +25,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.includes(:members, :group_users, :member_types)
-      .find_by_id(params[:id])
+    @group = find_full_group(params[:id])
     if @group
       render :show
     elsif
