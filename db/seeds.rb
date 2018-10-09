@@ -75,9 +75,9 @@ kermit = User.create  name: "Kermit the Frog", email: 'kermit@thefrog.com',
   password: 'misspiggy', hometown_id: 1
 file = File.open('db/seeding_files/users/Kermit_the_Frog.jpg')
 kermit.avatar.attach(io: file, filename: 'Kermit_the_Frog.jpg')
-users << kermit
-used_user_names = Set.new
+# users << kermit
 
+used_user_names = Set.new
 25.times do |user_num|
   is_male = Faker::Boolean.boolean
   name = get_name(used_user_names, is_male)
