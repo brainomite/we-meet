@@ -27,6 +27,7 @@ class GroupUser < ApplicationRecord
     class_name: :User,
     foreign_key: :user_id
 
+  scope :organizers, -> { where(member_type_id: 1) }
   private
 
   def default_values
