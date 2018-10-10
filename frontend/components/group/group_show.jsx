@@ -85,6 +85,8 @@ class GroupShow extends React.Component {
     );
   }
   groupNav() {
+    const { isMember } = this.props.group;
+    const buttonLabel = isMember ? "Leave" : "Join";
     return (
       <nav id="group-nav">
         <div>
@@ -93,8 +95,7 @@ class GroupShow extends React.Component {
             <li>members</li>
           </ul>
           <section>
-            <button className="confirm-button">Join</button>
-            <button className="confirm-button">Leave</button>
+            <button className="confirm-button">{buttonLabel}</button>
           </section>
         </div>
       </nav>
