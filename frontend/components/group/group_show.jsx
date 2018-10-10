@@ -6,6 +6,7 @@ class GroupShow extends React.Component {
     super(props);
     this.groupHeader = this.groupHeader.bind(this);
     this.groupNav = this.groupNav.bind(this);
+    this.groupMain = this.groupMain.bind(this);
   }
   fetchGroup(groupId) {
     this.props.fetchGroup(groupId).then(undefined, error => {
@@ -21,29 +22,38 @@ class GroupShow extends React.Component {
     }
   }
   render() {
-    const { groupHeader: GroupHeader, groupNav: GroupNav } = this;
-    const { group } = this.props;
+    const {
+      groupHeader: GroupHeader,
+      groupNav: GroupNav,
+      groupMain: GroupMain,
+    } = this;
     return (
       <main className="group">
         <GroupHeader />
         <GroupNav />
-        <section id="group-main">
+        <GroupMain />
+      </main>
+    );
+  }
+  groupMain() {
+    const { group } = this.props;
+    return (
+      <section id="group-main">
+        <div>
           <div>
-            <div>
-              <section className="group-about">
-                <h2>What we're about</h2>
-                <p>{group.description}</p>
-              </section>
-            </div>
-            <section>
-              <span>
-                <h2>Upcoming events</h2>
-              </span>
-              <div>No upcoming events</div>
+            <section className="group-about">
+              <h2>What we're about</h2>
+              <p>{group.description}</p>
             </section>
           </div>
-        </section>
-      </main>
+          <section>
+            <span>
+              <h2>Upcoming events</h2>
+            </span>
+            <div>No upcoming events</div>
+          </section>
+        </div>
+      </section>
     );
   }
   groupHeader() {

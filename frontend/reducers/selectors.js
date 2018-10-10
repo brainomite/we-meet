@@ -19,7 +19,6 @@ export const selectGroup = (state, groupId) => {
       newGroup.organizerIds.push(groupUser.user_id);
     }
     if (state.session.id === groupUser.user_id) newGroup.isMember = true;
-    console.log('newGroup.isMember: ', newGroup.isMember);
     if (newGroup.isMember && isOrganizer) newGroup.isOrganizer = true;
   });
   return newGroup;
