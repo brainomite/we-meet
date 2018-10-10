@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchGroups, fetchGroup } from "../../actions/group_actions";
+import GroupListIndexItem from './group_index_list_item';
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -27,9 +28,11 @@ class GroupShow extends React.Component {
           <ul>
             {groups.map(group => {
               return (
-                <li key={group.id} onClick={this.handleClick(group.id)}>
-                  {group.id}: {group.name}
-                </li>
+                <GroupListIndexItem
+                  key={group.id}
+                  group={group}
+                  history={this.props.history}
+                />
               );
             })}
           </ul>
