@@ -6,14 +6,15 @@ const GroupListIndexItem = ({ group }) => {
   const imgStyleObj = {
     backgroundImage: `url(${groupImage(group)})`,
   };
+  const members = 1;
+  const memberOrMembers = members === 1 ? 'member' : 'members';
   return (
     <li className="group-list-index-item">
       <Link to={`/group/${group.id}`} style={imgStyleObj}>
         <div className="glii-shade" />
         <div className="glii-words">
-        <h3>
-          {group.name}
-        </h3>
+          <h3>{group.name}</h3>
+          <p>We're {members} {memberOrMembers}</p>
         </div>
       </Link>
     </li>

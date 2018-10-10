@@ -26,13 +26,24 @@
     }
     div.glii-words {
       position: absolute;
-      width: 100%;
+      width: 85%;
       box-sizing: border-box;
-      text-align: center;
       bottom: 0;
       left: 0;
+      padding: 0 16px;
       h3 {
         color: white;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+      p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 16px;
+        font-size: 13px;
+        line-height: 1.6;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
   }
