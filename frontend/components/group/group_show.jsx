@@ -7,6 +7,7 @@ class GroupShow extends React.Component {
     this.groupHeader = this.groupHeader.bind(this);
     this.groupNav = this.groupNav.bind(this);
     this.groupMain = this.groupMain.bind(this);
+    this.handleJoinLeaveClick = this.handleJoinLeaveClick.bind(this);
   }
   fetchGroup(groupId) {
     this.props.fetchGroup(groupId).then(undefined, error => {
@@ -20,6 +21,13 @@ class GroupShow extends React.Component {
     if (this.props.match.params.groupId !== nextProps.match.params.groupId) {
       this.fetchGroup(nextProps.match.params.groupId);
     }
+  }
+  handleJoinLeaveClick() {
+    const groupId = this.props.match.params.groupId;
+    const result = this.props.group.isMember
+      ? this.props.leaveGroup(groupId)
+      : this.props.joinGroup(groupId);
+    result.then(() => this.props.getCurrentUser(this.props.currentUser.id));
   }
   render() {
     const {
@@ -95,7 +103,12 @@ class GroupShow extends React.Component {
             <li>members</li>
           </ul>
           <section>
-            <button className="confirm-button">{buttonLabel}</button>
+            <button
+              onClick={this.handleJoinLeaveClick}
+              className="confirm-button"
+            >
+              {buttonLabel}
+            </button>
           </section>
         </div>
       </nav>

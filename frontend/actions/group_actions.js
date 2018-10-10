@@ -80,10 +80,6 @@ export const joinGroup = id => {
       return dispatch(receiveGroup(result));
     };
 
-    // const failure = errorResults => {
-    //   return dispatch(receiveGroupErrors(errorResults));
-    // };
-
     return groupAPIUtil.joinGroup(id).then(success);
   };
 };
@@ -93,10 +89,6 @@ export const leaveGroup = id => {
     const success = result => {
       return dispatch(receiveGroup(result));
     };
-
-    // const failure = errorResults => {
-    //   return dispatch(receiveGroupErrors(errorResults));
-    // };
 
     return groupAPIUtil.leaveGroup(id).then(success);
   };
