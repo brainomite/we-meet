@@ -1,9 +1,21 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { groupImage } from "../../util/group_util";
 
-const GroupListIndexItem = ({ group, history }) => {
+const GroupListIndexItem = ({ group }) => {
+  const imgStyleObj = {
+    backgroundImage: `url(${groupImage(group)})`,
+  };
   return (
-    <li key={group.id} onClick={() => history.push(`/group/${group.id}`)}>
-      {group.id}: {group.name}
+    <li className="group-list-index-item">
+      <Link to={`/group/${group.id}`} style={imgStyleObj}>
+        <div className="glii-shade" />
+        <div className="glii-words">
+        <h3>
+          {group.name}
+        </h3>
+        </div>
+      </Link>
     </li>
   );
 };

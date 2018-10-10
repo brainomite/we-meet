@@ -4,19 +4,8 @@ import { fetchGroups, fetchGroup } from "../../actions/group_actions";
 import GroupListIndexItem from './group_index_list_item';
 
 class GroupShow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
   componentDidMount() {
     this.props.fetchGroups();
-  }
-
-  handleClick(groupId) {
-    return () => {
-      this.props.history.push(`/group/${groupId}`);
-    };
   }
 
   render() {
@@ -31,7 +20,6 @@ class GroupShow extends React.Component {
                 <GroupListIndexItem
                   key={group.id}
                   group={group}
-                  history={this.props.history}
                 />
               );
             })}
