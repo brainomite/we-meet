@@ -6,7 +6,7 @@ const GroupListIndexItem = ({ group }) => {
   const imgStyleObj = {
     backgroundImage: `url(${groupImage(group)})`,
   };
-  const members = 1;
+  const members = group.member_count;
   const memberOrMembers = members === 1 ? 'member' : 'members';
   return (
     <li className="group-list-index-item">
