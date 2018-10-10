@@ -11,9 +11,9 @@ class GroupShow extends React.Component {
   render() {
     const groups = Object.values(this.props.groups);
     return (
-      <main>
+      <main className="group-index">
         <div>
-          groups list here!
+          <h4>All meetups</h4>
           <ul>
             {groups.map(group => {
               return (
