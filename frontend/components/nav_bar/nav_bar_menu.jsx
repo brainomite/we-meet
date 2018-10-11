@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBarMenu = ({
   closeMenu,
@@ -15,7 +16,11 @@ const NavBarMenu = ({
         <nav className="navbar-menu-body">
           <ul className="navbar-menu-body-groups">
             {userGroups.map(group => {
-              return <li key={group.id}>{group.name}</li>;
+              return (
+                <li key={group.id}>
+                  <Link to={`/group/${group.id}`}>{group.name}</Link>
+                </li>
+              );
             })}
           </ul>
           <ul className="navbar-menu-body-admin">
