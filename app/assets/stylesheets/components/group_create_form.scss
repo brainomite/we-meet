@@ -1,0 +1,22 @@
+.group-create-form {
+  >div{
+    width: 840px;
+    margin: 0 auto;
+    > section {
+      > div{
+        > span {
+          font-size: 13px
+        }
+        > h2 {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+  li {
+    list-style: disc;
+  }
+  button {
+    font-weight: 400;
+  }
+}

@@ -14,7 +14,7 @@ textarea {
   border-radius: 3px;
 }
 
-input {
+input, textarea {
   background-color: $background-off-white;
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 4px;
@@ -26,6 +26,9 @@ a {
 }
 
 input:focus {
+  border-color: #1f24cc;
+}
+textarea:focus {
   border-color: #1f24cc;
 }
 
