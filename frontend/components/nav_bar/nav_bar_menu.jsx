@@ -17,7 +17,7 @@ const NavBarMenu = ({
           <ul className="navbar-menu-body-groups">
             {userGroups.map(group => {
               return (
-                <li key={group.id}>
+                <li key={group.id} className="menu-hover">
                   <Link to={`/group/${group.id}`}>{group.name}</Link>
                 </li>
               );
@@ -26,7 +26,7 @@ const NavBarMenu = ({
           <ul className="navbar-menu-body-admin">
             <li className="navbar-menu-name">{currentUser.name}</li>
             <li
-              className="navbar-menu-logout"
+              className="navbar-menu-logout menu-hover"
               onClick={() => {
                 logout();
                 if (pathname !== root) push(root);
