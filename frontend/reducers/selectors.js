@@ -14,6 +14,10 @@ export const selectGroup = (state, groupId) => {
   newGroup.organizerIds = [];
   newGroup.group_user_ids.forEach(groupUserId => {
     const groupUser = state.entities.groupUsers[groupUserId];
+    if (!groupUser) {
+      // console.log('groupUser missin: ', groupUser);
+      return;
+    }
     const isOrganizer = groupUser.member_type === 'Organizer';
     if (isOrganizer){
       newGroup.organizerIds.push(groupUser.user_id);
