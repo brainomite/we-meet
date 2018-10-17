@@ -28,8 +28,9 @@ const NavBarMenu = ({
             <li
               className="navbar-menu-logout menu-hover"
               onClick={() => {
-                logout();
-                if (pathname !== root) push(root);
+                logout().then(() => {
+                  if (pathname !== root) push(root);
+                });
               }}
             >
               Logout
