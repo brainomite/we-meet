@@ -14,7 +14,7 @@ end
 json.group_users do
   group.group_users.each do |group_user|
     json.set! group_user.id.to_s.to_sym do
-      json.extract! group_user, :user_id, :group_id
+      json.extract! group_user, :id, :user_id, :group_id
       json.member_type group_user.member_type.title
     end
   end

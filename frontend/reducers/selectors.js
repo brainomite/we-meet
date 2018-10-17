@@ -1,31 +1,39 @@
 import merge from "lodash/merge";
 
+const DEFAULT_GROUP_USER = {
+  id: null,
+  user_id: null,
+  group_id: null,
+  member_type: null,
+};
+
+const DEFAULT_GROUP = {
+  name: "",
+  description: "",
+  group_user_ids: [],
+  hometown: "",
+  id: null,
+  member_ids: [],
+};
+
 export const selectGroup = (state, groupId) => {
-  const DEFAULT_GROUP = {
-    name: "",
-    description: "",
-    group_user_ids: [],
-    hometown: "",
-    id: null,
-    member_ids: [],
-  };
   const originalGroup = state.entities.groups[groupId] || {};
   const newGroup = merge({}, DEFAULT_GROUP, originalGroup);
   newGroup.organizerIds = [];
   newGroup.group_user_ids.forEach(groupUserId => {
-    const groupUser = state.entities.groupUsers[groupUserId];
-    if (!groupUser) {
-      // console.log('groupUser missin: ', groupUser);
-      return;
-    }
-    const isOrganizer = groupUser.member_type === 'Organizer';
-    if (isOrganizer){
+    const groupUser = selectGroupUser(state, groupUserId);
+    const isOrganizer = groupUser.member_type === "Organizer";
+    if (isOrganizer) {
       newGroup.organizerIds.push(groupUser.user_id);
     }
     if (state.session.id === groupUser.user_id) newGroup.isMember = true;
     if (newGroup.isMember && isOrganizer) newGroup.isOrganizer = true;
   });
   return newGroup;
+};
+
+export const selectGroupUser = ({ entities }, id) => {
+  return entities.groupUsers[id] || DEFAULT_GROUP_USER;
 };
 
 export const selectCurrentUser = ({ entities, session }) => {
