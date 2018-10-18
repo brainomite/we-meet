@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { setAvatar } from "../../actions/session_actions";
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal } from "../../actions/modal_actions";
+import { selectCurrentUser } from "../../reducers/selectors";
+import AvatarForm from "./avatar_form";
 
-import AvatarForm from './avatar_form';
-
-const handleFile = (props) => {
+const handleFile = props => {
   return event => {
     const file = event.currentTarget.files[0];
     const fileReader = new FileReader();
@@ -19,14 +19,17 @@ const handleFile = (props) => {
   };
 };
 
-const msp = ({ entities, session }) => ({
-  currentUser: entities.users[session.id]
+const msp = state => ({
+  currentUser: selectCurrentUser(state),
 });
 
 const mdp = dispatch => ({
   setAvatar: avatar => dispatch(setAvatar(avatar)),
   handleFile: props => handleFile(props),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
 });
 
-export default connect(msp, mdp)(AvatarForm);
+export default connect(
+  msp,
+  mdp
+)(AvatarForm);

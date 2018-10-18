@@ -4,3 +4,7 @@ if user.avatar.attached?
 else
   json.avatarUrl nil
 end
+
+if logged_in? && user == current_user
+  json.extract! user, :group_ids
+end

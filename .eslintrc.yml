@@ -13,7 +13,9 @@ rules:
   camelcase:
     - 1
     - properties: never
-  comma-dangle: 0
+  comma-dangle:
+    - 2
+    - always-multiline
   eqeqeq: 1
   guard-for-in: 1
   max-len:

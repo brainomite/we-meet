@@ -5,15 +5,21 @@
 }
 
 header.navbar {
-  height: 69px;
+  height: 86px;
   width: 100%;
+  border-bottom: 2px solid $wemeet-gray-black;
+  background-color: $background-white;
 }
 
 .navbar-main {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 19px 20px;
   background-color: $background-white;
+}
+
+.navbar-main-nav {
+  display: flex;
 }
 
 ul.navbar-main-links {
@@ -27,18 +33,22 @@ ul.navbar-main-links {
   align-items: center;
 }
 .navbar-main-links a {
-  color: rgba(46,62,72,.6);
+  color: rgba(46, 62, 72, 0.6);
   font-size: 14px;
 }
 .navbar-main-links-newgroup {
-  border-right: 1px solid rgba(46, 62, 72, 0.12);
+  border-right: 1px solid $wemeet-gray-black;
   padding-right: 16px;
+}
+
+.navbar-main-links-newgroup a {
   color: #00a2c7;
   font-size: 14px;
   font-weight: 700;
 }
-.navbar-main-links-newgroup-signedin{
-  color: #F64060;
+
+.navbar-main-links-newgroup-signedin a {
+  color: #f64060;
 }
 
 .navbar-avatar {

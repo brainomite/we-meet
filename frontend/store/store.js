@@ -2,10 +2,12 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "../reducers/root_reducer";
 
+const SHOW_LOGGER = false;
+
 const middlewares = [thunk];
 const isDev = process.env.NODE_ENV !== "production";
 
-if (isDev) {
+if (isDev && SHOW_LOGGER) {
   // must use 'require' (import only allowed at top of file)
   const { logger } = require("redux-logger");
   middlewares.push(logger);

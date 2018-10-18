@@ -1,0 +1,162 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@mixin group-center {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+}
+
+header.group-header {
+  height: 377.5px;
+  margin: 0 20px;
+}
+
+@mixin group-left-3 {
+  flex-grow: 3;
+  flex-basis: 0;
+  width: 621.69px;
+  max-width: 621.69px;
+}
+@mixin group-right-2 {
+  padding-left: 20px;
+  flex-grow: 2;
+  flex-basis: 0;
+  max-width: 418.31px;
+}
+.group-header-container {
+  @include group-center();
+  > div {
+    padding: 20px;
+    display: flex;
+    section {
+      @include group-right-2();
+    }
+    > div {
+      @include group-left-3();
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: $black-text;
+      margin-bottom: 10px;
+    }
+    ul {
+      display: flex;
+    }
+    li {
+      font-size: 14px;
+      color: $black-text;
+      + li {
+        padding-left: 10px;
+      }
+      + li:before {
+        padding-right: 10px;
+        content: "·";
+      }
+    }
+  }
+}
+
+.group-header-image {
+  background-color: green;
+  width: 600px;
+  height: 337px;
+  border-radius: 8px;
+}
+#group-nav {
+  border-top: 1px solid $wemeet-gray-black;
+  height: 70px;
+  > div {
+    @include group-center();
+    display: flex;
+    height: 69px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 20px;
+    > ul {
+      display: flex;
+      @include group-left-3();
+      li {
+        padding-right: 40px;
+        font-size: 14px;
+      }
+    }
+    > section {
+      display: flex;
+      @include group-right-2();
+      align-items: center;
+      button {
+        width: 162.91px;
+        height: 38px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        align-items: center;
+        border-radius: 4px;
+        background-color: $wemeet-light-red;
+        + button {
+          margin-left: 20px;
+        }
+      }
+      button:hover {
+        background-color: $wemeet-red;
+      }
+    }
+  }
+}
+#group-main {
+  background-color: #f6f7f8;
+  > div {
+    @include group-center();
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      @include group-left-3();
+    }
+    > section {
+      @include group-right-2();
+    }
+    > section {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      > span {
+        width: 320px;
+        > h2 {
+          padding-bottom: 20px;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+      > div {
+        border: 3px dashed $wemeet-gray-black;
+        border-radius: 8px;
+        box-sizing: border-box;
+        height: 206px;
+        width: 320px;
+        padding: 20px;
+      }
+    }
+  }
+}
+
+.group-about {
+  margin-top: 40px;
+  > h2 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}

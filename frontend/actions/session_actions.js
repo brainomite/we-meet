@@ -8,23 +8,17 @@ export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
-const resolved = () => {
-  // lets a return a resolved promise so
-  // that we can chain off of the state-change
-  return Promise.resolve(); // eslint-disable-line no-undef
-};
-
 const receiveSessionErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
-    errors: errors.responseJSON
+    errors: errors.responseJSON,
   };
 };
 
 const receiveUserErrors = errors => {
   return {
     type: RECEIVE_USER_ERRORS,
-    errors: errors.responseJSON
+    errors: errors.responseJSON,
   };
 };
 
@@ -42,14 +36,14 @@ export const clearUserErrors = () => {
 
 const logoutCurrentUser = () => {
   return {
-    type: LOGOUT_CURRENT_USER
+    type: LOGOUT_CURRENT_USER,
   };
 };
 
-const receiveCurrentUser = currentUser => {
+const receiveCurrentUser = payload => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user: currentUser
+    payload,
   };
 };
 
@@ -71,15 +65,14 @@ export const loginDemoUser = () =>
   login({
     user: {
       email: "kermit@thefrog.com",
-      password: "misspiggy"
-    }
+      password: "misspiggy",
+    },
   });
 
 export const signup = user => {
   return dispatch => {
     const success = result => {
-      dispatch(receiveCurrentUser(result));
-      return resolved();
+      return dispatch(receiveCurrentUser(result));
     };
 
     const failure = errorResults => {
@@ -107,11 +100,20 @@ export const logout = () => {
 export const setAvatar = avatar => {
   return dispatch => {
     const success = result => {
-      dispatch(receiveCurrentUser(result));
-      return resolved();
+      return dispatch(receiveCurrentUser(result));
     };
 
     dispatch(openModal("loading"));
     return SessionAPIUtil.setAvatar(avatar).then(success);
+  };
+};
+
+export const getCurrentUser = userId => {
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveCurrentUser(result));
+    };
+
+    return SessionAPIUtil.getUser(userId).then(success);
   };
 };
