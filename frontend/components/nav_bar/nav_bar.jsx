@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     };
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.renderCreateGroup = this.renderCreateGroup.bind(this);
   }
 
   componentDidUpdate() {
@@ -75,13 +76,24 @@ class NavBar extends React.Component {
     });
   }
 
+  renderCreateGroup() {
+    const { pathname } = this.props.location;
+    if (!this.props.isLoggedIn || pathname === "/create") return null;
+    let newGroupClass = "navbar-main-links-newgroup";
+    if (pathname === "/")
+      newGroupClass += " navbar-main-links-newgroup-signedin";
+    return (
+      <li className={newGroupClass}>
+        <Link to="/create">Start a new group</Link>
+      </li>
+    );
+  }
+
   render() {
     const { isLoggedIn } = this.props;
+    const { renderCreateGroup: RenderCreateGroup } = this;
     let avatar = null;
-    let newGroupClass = "navbar-main-links-newgroup";
     if (isLoggedIn) {
-      if (this.props.location.pathname === "/")
-        newGroupClass += " navbar-main-links-newgroup-signedin";
       if (this.props.currentUser.avatarUrl) {
         avatar = (
           <li onClick={this.openMenu}>
@@ -114,9 +126,7 @@ class NavBar extends React.Component {
               this.props.location.pathname
             ) ? null : (
               <ul className="navbar-main-links">
-                <li className={newGroupClass}>
-                  <Link to="/create">Start a new group</Link>
-                </li>
+                <RenderCreateGroup />
                 {isLoggedIn ? null : (
                   <li>
                     <Link to="/login">Log In</Link>
