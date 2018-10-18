@@ -5,9 +5,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.footer > span {
+  flex-direction: column;
   color: white;
-  font-size: 36px;
+  span {
+    font-size: 36px;
+    margin-bottom: 48px;
+  }
+  div {
+    display: flex;
+    justify-content: space-evenly;
+    width: 960px;
+    a {
+      font-size: 48px;
+      color: white;
+      transition: all 0.2s ease-in-out;
+    }
+    a:hover {
+      color: #18bc9c;
+      transform: scale(1.2);
+    }
+  }
 }
