@@ -103,12 +103,14 @@ class GroupShow extends React.Component {
             <li>members</li>
           </ul>
           <section>
-            <button
-              onClick={this.handleJoinLeaveClick}
-              className="confirm-button"
-            >
-              {buttonLabel}
-            </button>
+            {!this.props.isLoggedIn ? null : (
+              <button
+                onClick={this.handleJoinLeaveClick}
+                className="confirm-button"
+              >
+                {buttonLabel}
+              </button>
+            )}
           </section>
         </div>
       </nav>

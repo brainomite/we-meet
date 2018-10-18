@@ -1,12 +1,17 @@
 import { connect } from "react-redux";
 import { fetchGroup, joinGroup, leaveGroup } from "../../actions/group_actions";
 import GroupShow from "./group_show";
-import { selectGroup, selectCurrentUser } from "../../reducers/selectors";
+import {
+  selectGroup,
+  selectCurrentUser,
+  selectIsLoggedIn,
+} from "../../reducers/selectors";
 import { getCurrentUser } from "../../actions/session_actions.js";
 
 const msp = (state, ownProps) => ({
   group: selectGroup(state, ownProps.match.params.groupId),
   currentUser: selectCurrentUser(state),
+  isLoggedIn: selectIsLoggedIn(state),
 });
 
 const mdp = dispatch => ({
