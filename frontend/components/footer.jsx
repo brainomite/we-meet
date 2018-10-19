@@ -10,14 +10,14 @@ const Footer = props => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i class="fab fa-linkedin" />
+          <i className="fab fa-linkedin" />
         </a>
         <a
           href="https://github.com/brainomite/we-meet"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i class="fab fa-github" />
+          <i className="fab fa-github" />
         </a>
       </div>
     </footer>
