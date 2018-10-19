@@ -32,31 +32,53 @@ header.group-header {
   > div {
     padding: 20px;
     display: flex;
-    section {
+    > section {
       @include group-right-2();
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+        color: $black-text;
+        margin-bottom: 10px;
+      }
+      ul {
+        display: flex;
+        li {
+          font-size: 14px;
+          color: $black-text;
+          + li {
+            padding-left: 10px;
+          }
+          + li:before {
+            padding-right: 10px;
+            content: "·";
+          }
+        }
+      }
+      > div {
+        display: flex;
+        padding-top: 20px;
+        color: rgb(46, 62, 72);
+        img,
+        i {
+          height: 45px;
+          width: 45px;
+          font-size: 45px;
+          margin-right: 20px;
+        }
+        img {
+          border-radius: 999px;
+        }
+        p,
+        span {
+          line-height: 1.6;
+        }
+        p {
+          font-weight: 500;
+        }
+      }
     }
     > div {
       @include group-left-3();
-    }
-    h1 {
-      font-size: 32px;
-      font-weight: 700;
-      color: $black-text;
-      margin-bottom: 10px;
-    }
-    ul {
-      display: flex;
-    }
-    li {
-      font-size: 14px;
-      color: $black-text;
-      + li {
-        padding-left: 10px;
-      }
-      + li:before {
-        padding-right: 10px;
-        content: "·";
-      }
     }
   }
 }

@@ -15,7 +15,12 @@ const DEFAULT_GROUP = {
   id: null,
   member_ids: [],
 };
-
+const DEFAULT_USER = {
+  name: "",
+  hometown_id: null,
+  id: null,
+  avatarUrl: null,
+};
 export const selectGroup = (state, groupId) => {
   const originalGroup = state.entities.groups[groupId] || {};
   const newGroup = merge({}, DEFAULT_GROUP, originalGroup);
@@ -29,15 +34,26 @@ export const selectGroup = (state, groupId) => {
     if (state.session.id === groupUser.user_id) newGroup.isMember = true;
     if (newGroup.isMember && isOrganizer) newGroup.isOrganizer = true;
   });
+  newGroup.members = selectUsers(state, newGroup.member_ids);
   return newGroup;
 };
+
+const selectUsers = (state, userIds) => {
+  return userIds.reduce((accumObj, userId) => {
+    accumObj[userId] = selectUser(state, userId);
+    return accumObj;
+  }, {});
+};
+
+const selectUser = ({ entities }, userId) =>
+  entities.users[userId] || DEFAULT_USER;
 
 export const selectGroupUser = ({ entities }, id) => {
   return entities.groupUsers[id] || DEFAULT_GROUP_USER;
 };
 
-export const selectCurrentUser = ({ entities, session }) => {
-  return entities.users[session.id];
+export const selectCurrentUser = state => {
+  return selectUser(state, state.session.id);
 };
 
 export const selectIsLoggedIn = state => {

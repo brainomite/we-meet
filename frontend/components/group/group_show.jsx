@@ -68,6 +68,19 @@ class GroupShow extends React.Component {
     const group = this.props.group;
     const memberCount = group.member_ids ? group.member_ids.length : "?";
     const memberOrMember = memberCount === 1 ? "member" : "members";
+    let organizer = {};
+    if (group.organizerIds) {
+      const organizerId = group.organizerIds[0];
+      organizer = group.members[organizerId] || {};
+    }
+    const avatar = organizer.avatarUrl ? (
+      <img
+        className="navbar-avatar-image"
+        src={organizer.avatarUrl}
+      />
+    ) : (
+      <i className="far fa-user-circle" />
+    );
     const imgStyleObj = {
       backgroundImage: `url(${groupImage(group)})`,
     };
@@ -86,6 +99,13 @@ class GroupShow extends React.Component {
                   {memberCount} {memberOrMember}
                 </li>
               </ul>
+              <div>
+                {avatar}
+                <div>
+                  <span>Organized By</span>
+                  <p>{organizer.name ? organizer.name.split(" ")[0] : "?"}</p>
+                </div>
+              </div>
             </section>
           </div>
         </div>
