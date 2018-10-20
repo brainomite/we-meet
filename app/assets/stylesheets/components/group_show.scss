@@ -141,11 +141,18 @@ header.group-header {
     justify-content: space-between;
     > div {
       @include group-left-3();
+      > section {
+        margin-top: 40px;
+        margin-right: 20px;
+        > h2 {
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 29px;
+        }
+      }
     }
     > section {
       @include group-right-2();
-    }
-    > section {
       margin-top: 40px;
       display: flex;
       flex-direction: column;
@@ -171,12 +178,7 @@ header.group-header {
 }
 
 .group-about {
-  margin-top: 40px;
-  > h2 {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 29px;
-  }
+
   p {
     font-size: 16px;
     line-height: 28px;

@@ -1,5 +1,6 @@
 import React from "react";
 import { groupImage } from "../../util/group_util";
+import MemberList from "../member_list";
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class GroupShow extends React.Component {
   }
   groupMain() {
     const { group } = this.props;
+
     return (
       <section id="group-main">
         <div>
@@ -53,6 +55,11 @@ class GroupShow extends React.Component {
               <h2>What we're about</h2>
               <p>{group.description}</p>
             </section>
+            <MemberList
+              header="Members"
+              members={Object.values(group.members)}
+              isMember={group.isMember}
+            />
           </div>
           <section>
             <span>
@@ -74,10 +81,7 @@ class GroupShow extends React.Component {
       organizer = group.members[organizerId] || {};
     }
     const avatar = organizer.avatarUrl ? (
-      <img
-        className="navbar-avatar-image"
-        src={organizer.avatarUrl}
-      />
+      <img src={organizer.avatarUrl} />
     ) : (
       <i className="far fa-user-circle" />
     );

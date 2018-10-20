@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
-  def current_user
+  def current_user(refresh=false)
+    if refresh
+      @current_user = nil;
+    end
     @current_user ||= User.includes(:groups)
                           .find_by_session_token(session[:session_token])
   end

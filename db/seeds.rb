@@ -66,7 +66,7 @@ avatars = {males: [], females: []}
 (1..114).each { |num|  avatars[:females] << avatar_url + "female/#{num}.png" }
 
 organizer = MemberType.create id: 1,title: "Organizer"
-regular_member = MemberType.create id: 5, title: "Regular Member"
+regular_member = MemberType.create id: 5, title: "Member"
 
 # users
 users = []
