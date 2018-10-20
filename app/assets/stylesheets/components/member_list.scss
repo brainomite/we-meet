@@ -1,0 +1,10 @@
+.member-list {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+  }
+  > h2 {
+    padding-bottom: 20px;
+  }
+}

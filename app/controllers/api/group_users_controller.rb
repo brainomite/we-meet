@@ -6,6 +6,7 @@ class Api::GroupUsersController < ApplicationController
         unless @group.members.include?(current_user)
           @group.members << current_user
         end
+        current_user(true)
         render "api/groups/show"
       elsif
         render json:['Group not found'], status: 404
@@ -24,6 +25,7 @@ class Api::GroupUsersController < ApplicationController
         unless @group.members.merge(GroupUser.organizers)
                               .include?(current_user)
           @group.members.delete(current_user)
+          current_user(true)
           render "api/groups/show"
         else
           msg = 'Organizers may not leave, you made your bed, now sleep in it'
