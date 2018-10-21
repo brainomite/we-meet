@@ -24,8 +24,13 @@ class ApplicationController < ActionController::Base
   end
 
   def find_full_group(id)
-    Group.includes(:members, :group_users, :member_types)
-      .find_by_id(id)
+    @full_group ||= Group.includes(
+      :group_users,
+      :member_types,
+      members: {
+        avatar_attachment: :blob
+      }
+    ).find_by_id(id)
   end
 
 end
