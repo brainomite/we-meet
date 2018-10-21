@@ -5,10 +5,22 @@ import MemberList from "../member_list";
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
-    this.groupHeader = this.groupHeader.bind(this);
-    this.groupNav = this.groupNav.bind(this);
-    this.groupMain = this.groupMain.bind(this);
-    this.handleJoinLeaveClick = this.handleJoinLeaveClick.bind(this);
+    // this.groupHeader = this.groupHeader.bind(this);
+    this.binder("groupHeader");
+    this.binder("groupNav");
+    this.binder("groupMain");
+    this.binder("handleJoinLeaveClick");
+    this.binder("setAboutRef");
+    this.binder("setMembersRef");
+    this.binder("setHeaderRef");
+    this.binder("handleScroll");
+    this.state = {
+      headerVisable: undefined,
+      aboutSectionVisable: undefined,
+    };
+  }
+  binder(funcName) {
+    this[funcName] = this[funcName].bind(this);
   }
   fetchGroup(groupId) {
     this.props.fetchGroup(groupId).then(undefined, error => {
@@ -17,6 +29,11 @@ class GroupShow extends React.Component {
   }
   componentDidMount() {
     this.fetchGroup(this.props.match.params.groupId);
+    this.handleScroll();
+    window.addEventListener("scroll", this.handleScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.groupId !== nextProps.match.params.groupId) {
@@ -37,12 +54,41 @@ class GroupShow extends React.Component {
       groupMain: GroupMain,
     } = this;
     return (
-      <main className="group">
+      <main className="group" onScroll={this.handleScroll}>
         <GroupHeader />
         <GroupNav />
         <GroupMain />
       </main>
     );
+  }
+  setAboutRef(element) {
+    this.aboutSection = element;
+  }
+  setMembersRef(element) {
+    this.membersSection = element;
+  }
+  setHeaderRef(element) {
+    this.header = element;
+  }
+  handleScrollTo(element) {
+    window.scrollTo({ top: element.offsetTop - 80, behavior: "smooth" });
+  }
+  getTopBottom(element) {
+    const bounds = element.getBoundingClientRect();
+    const top = bounds.top;
+    const bottom = bounds.bottom;
+    return [top, bottom];
+  }
+  setVisable(element, stateKey, offset = 0) {
+    const [top, bottom] = this.getTopBottom(element);
+    const isVisable = top >= offset || bottom >= offset;
+    if (this.state[stateKey] !== isVisable) {
+      this.setState({ [stateKey]: isVisable });
+    }
+  }
+  handleScroll() {
+    this.setVisable(this.header, "headerVisable");
+    this.setVisable(this.aboutSection, "aboutSectionVisable", 80);
   }
   groupMain() {
     const { group } = this.props;
@@ -51,7 +97,7 @@ class GroupShow extends React.Component {
       <section id="group-main">
         <div>
           <div>
-            <section className="group-about">
+            <section className="group-about" ref={this.setAboutRef}>
               <h2>What we're about</h2>
               <p>{group.description}</p>
             </section>
@@ -59,6 +105,7 @@ class GroupShow extends React.Component {
               header="Members"
               members={Object.values(group.members)}
               isMember={group.isMember}
+              refMethod={this.setMembersRef}
             />
           </div>
           <section>
@@ -89,7 +136,7 @@ class GroupShow extends React.Component {
       backgroundImage: `url(${groupImage(group)})`,
     };
     return (
-      <header className="group-header">
+      <header className="group-header" ref={this.setHeaderRef}>
         <div className="group-header-container">
           <div>
             <div>
@@ -120,11 +167,28 @@ class GroupShow extends React.Component {
     const { isMember } = this.props.group;
     const buttonLabel = isMember ? "Leave" : "Join";
     return (
-      <nav id="group-nav">
+      <nav
+        id="group-nav"
+        className={this.state.headerVisable ? "" : "group-show-sticky"}
+      >
         <div>
           <ul>
-            <li>About</li>
-            <li>members</li>
+            <li
+              onClick={() => this.handleScrollTo(this.aboutSection)}
+              className={
+                this.state.aboutSectionVisable ? "group-show-blue" : ""
+              }
+            >
+              About
+            </li>
+            <li
+              onClick={() => this.handleScrollTo(this.membersSection)}
+              className={
+                !this.state.aboutSectionVisable ? "group-show-blue" : ""
+              }
+            >
+              Members
+            </li>
           </ul>
           <section>
             {!this.props.isLoggedIn ? null : (

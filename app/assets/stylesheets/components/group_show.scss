@@ -92,6 +92,11 @@ header.group-header {
 #group-nav {
   border-top: 1px solid $wemeet-gray-black;
   height: 70px;
+  background-color: $background-white;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  z-index: 10;
+  top: 0;
   > div {
     @include group-center();
     display: flex;
@@ -105,6 +110,11 @@ header.group-header {
       li {
         padding-right: 40px;
         font-size: 14px;
+        cursor: pointer;
+      }
+      li.group-show-blue,
+      li:hover {
+        color: $wemeet-blue;
       }
     }
     > section {
@@ -130,6 +140,10 @@ header.group-header {
       }
     }
   }
+}
+#group-nav.group-show-sticky {
+  box-shadow: 0 0 2px 0 rgba(46, 62, 72, 0.12),
+    0 2px 4px 0 rgba(46, 62, 72, 0.12);
 }
 #group-main {
   background-color: #f6f7f8;
@@ -178,7 +192,6 @@ header.group-header {
 }
 
 .group-about {
-
   p {
     font-size: 16px;
     line-height: 28px;

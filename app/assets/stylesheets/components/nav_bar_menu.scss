@@ -36,14 +36,12 @@
     i {
       margin-left: 16px;
     }
-    // font-size: 14px;
     line-height: 1.6;
     border-radius: 4px;
     padding: 4px 16px;
     display: inline-flex;
-    // justify-content: center;
     align-items: center;
-    background: #00a2c7;
+    background: $wemeet-blue;
     color: white;
     transition: background 0.15s;
   }
