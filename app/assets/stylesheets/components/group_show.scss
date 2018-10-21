@@ -134,9 +134,16 @@ header.group-header {
         + button {
           margin-left: 20px;
         }
+        transition: background .15s;
       }
       button:hover {
         background-color: $wemeet-red;
+      }
+      button.group-show-button-deny{
+        cursor: not-allowed;
+      }
+      button.group-show-button-deny:hover {
+        background-color: grey;
       }
     }
   }

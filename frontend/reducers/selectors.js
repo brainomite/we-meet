@@ -30,7 +30,9 @@ export const selectGroup = (state, groupId) => {
   newGroup.group_user_ids.forEach(groupUserId => {
     const groupUser = selectGroupUser(state, groupUserId);
     const isOrganizer = groupUser.member_type === "Organizer";
-    newGroup.members[groupUser.user_id].memberType = groupUser.member_type;
+    if (newGroup.members[groupUser.user_id]) {
+      newGroup.members[groupUser.user_id].memberType = groupUser.member_type;
+    }
     if (isOrganizer) {
       newGroup.organizerIds.push(groupUser.user_id);
     }

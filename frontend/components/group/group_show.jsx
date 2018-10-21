@@ -164,8 +164,12 @@ class GroupShow extends React.Component {
     );
   }
   groupNav() {
-    const { isMember } = this.props.group;
+    const { isMember, isOrganizer } = this.props.group;
     const buttonLabel = isMember ? "Leave" : "Join";
+    const buttonClassBase = "confirm-button";
+    const buttonClass = isOrganizer
+      ? `${buttonClassBase} group-show-button-deny`
+      : buttonClassBase;
     return (
       <nav
         id="group-nav"
@@ -193,8 +197,8 @@ class GroupShow extends React.Component {
           <section>
             {!this.props.isLoggedIn ? null : (
               <button
-                onClick={this.handleJoinLeaveClick}
-                className="confirm-button"
+                onClick={isOrganizer ? null : this.handleJoinLeaveClick}
+                className={buttonClass}
               >
                 {buttonLabel}
               </button>
