@@ -1,26 +1,24 @@
 import React from "react";
 import { groupImage } from "../../util/group_util";
 import MemberList from "../member_list";
+import genBinderFunc from "../../util/genBinderFunc";
 
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.groupHeader = this.groupHeader.bind(this);
-    this.binder("groupHeader");
-    this.binder("groupNav");
-    this.binder("groupMain");
-    this.binder("handleJoinLeaveClick");
-    this.binder("setAboutRef");
-    this.binder("setMembersRef");
-    this.binder("setHeaderRef");
-    this.binder("handleScroll");
+    const binder = genBinderFunc(this);
+    binder("groupHeader");
+    binder("groupNav");
+    binder("groupMain");
+    binder("handleJoinLeaveClick");
+    binder("setAboutRef");
+    binder("setMembersRef");
+    binder("setHeaderRef");
+    binder("handleScroll");
     this.state = {
       headerVisable: undefined,
       aboutSectionVisable: undefined,
     };
-  }
-  binder(funcName) {
-    this[funcName] = this[funcName].bind(this);
   }
   fetchGroup(groupId) {
     this.props.fetchGroup(groupId).then(undefined, error => {
