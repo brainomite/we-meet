@@ -6,7 +6,7 @@ import LoginForm from "./login_form/login_form_container";
 import AvatarForm from "./avatar_form/avatar_form_container";
 import GroupShow from "./group/group_show_container";
 import AuthRoute from "../util/route_util";
-import GroupCreateForm from "./group/group_create_form";
+import GroupCreateForm from "./group/group_create/group_create_container";
 import Footer from "./footer";
 import Modal from "./modal";
 import SplashOrGroup from "./splash_or_group";
