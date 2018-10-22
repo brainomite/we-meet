@@ -1,6 +1,11 @@
 import React from "react";
 import FormErrors from "../../form_errors/form_errors";
 import genBinderFunc from "../../../util/genBinderFunc";
+import {
+  GroupCreateNameError,
+  GroupCreateHometownError,
+  GroupCreateDescriptionError,
+} from "./group_create_errors";
 
 class GroupCreateForm extends React.Component {
   constructor(props) {
@@ -24,6 +29,11 @@ class GroupCreateForm extends React.Component {
   }
 
   handleChange({ currentTarget }) {
+    if ([`${currentTarget.name}ErrorEnabled`] && currentTarget.validity.valid) {
+      this.setState({
+        [`${currentTarget.name}ErrorEnabled`]: false,
+      });
+    }
     this.setState({
       [currentTarget.name]: currentTarget.value,
       [`${currentTarget.name}Valid`]: currentTarget.validity.valid,
@@ -31,7 +41,6 @@ class GroupCreateForm extends React.Component {
   }
 
   handleBlur({ currentTarget }) {
-    console.log("currentTarget.name: ", currentTarget.name);
     if (!this.state[`${currentTarget.name}ErrorEnabled`]) {
       this.setState({
         [`${currentTarget.name}ErrorEnabled`]: true,
@@ -72,6 +81,14 @@ class GroupCreateForm extends React.Component {
     }
     return "";
   }
+  createErrorObj(fieldStr) {
+    const obj = {
+      [fieldStr]: this.state[fieldStr],
+      [`${fieldStr}Valid`]: this.state[`${fieldStr}Valid`],
+      [`${fieldStr}ErrorEnabled`]: this.state[`${fieldStr}ErrorEnabled`],
+    };
+    return obj;
+  }
   render() {
     const { isFormValid } = this.state;
     const buttonClass = isFormValid ? "confirm-button" : "disable-button";
@@ -105,6 +122,9 @@ class GroupCreateForm extends React.Component {
                   required
                   className={hometownClass}
                 />
+                <GroupCreateHometownError
+                  {...this.createErrorObj("hometown")}
+                />
               </fieldset>
             </div>
           </section>
@@ -127,6 +147,7 @@ class GroupCreateForm extends React.Component {
                   ref={el => (this.nameInput = el)}
                   className={nameClass}
                 />
+                <GroupCreateNameError {...this.createErrorObj("name")} />
               </fieldset>
               <fieldset>
                 <h2>Describe who should join, and what your Group will do.</h2>
@@ -140,6 +161,9 @@ class GroupCreateForm extends React.Component {
                   ref={el => (this.descTextArea = el)}
                   required
                   className={descriptionClass}
+                />
+                <GroupCreateDescriptionError
+                  {...this.createErrorObj("description")}
                 />
               </fieldset>
             </div>

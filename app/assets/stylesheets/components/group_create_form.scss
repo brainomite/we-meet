@@ -58,8 +58,13 @@
           textarea {
             width: 100%;
           }
-          .invalid-form-element {
+          input.invalid-form-element,
+          textarea.invalid-form-element {
             border-color: $wemeet-warning-yellow;
+          }
+          span.invalid-form-element {
+            color: $wemeet-warning-yellow;
+            line-height: 2;
           }
           small {
             font-size: 13px;
@@ -89,8 +94,8 @@
           }
           button.disable-button {
             background-color: rgba(117, 117, 117, 0.12);
-            border: 1px solid rgba(0,0,0,.12);
-            color: rgba(0,0,0,.54);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            color: rgba(0, 0, 0, 0.54);
             cursor: default;
             text-align: center;
           }
