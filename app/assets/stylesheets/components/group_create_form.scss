@@ -58,6 +58,9 @@
           textarea {
             width: 100%;
           }
+          .invalid-form-element {
+            border-color: $wemeet-warning-yellow;
+          }
           small {
             font-size: 13px;
             line-height: 1.6;
@@ -83,6 +86,13 @@
             margin: 16px 0;
             height: 39.2px;
             padding: 0 16px;
+          }
+          button.disable-button {
+            background-color: rgba(117, 117, 117, 0.12);
+            border: 1px solid rgba(0,0,0,.12);
+            color: rgba(0,0,0,.54);
+            cursor: default;
+            text-align: center;
           }
         }
       }

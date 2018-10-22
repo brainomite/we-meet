@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createGroup, clearGroupErrors } from "../../actions/group_actions";
 import FormErrors from "./../form_errors/form_errors";
+import genBinderFunc from "../../util/genBinderFunc";
 
 class GroupCreateForm extends React.Component {
   constructor(props) {
@@ -10,32 +11,75 @@ class GroupCreateForm extends React.Component {
       name: "",
       description: "",
       hometown: "",
+      isFormValid: false,
+      hometownValid: false,
+      nameValid: false,
+      descriptionValid: false,
+      hometownErrorEnabled: false,
+      nameErrorEnabled: false,
+      descriptionErrorEnabled: false,
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    const binder = genBinderFunc(this);
+    binder("handleChange");
+    binder("handleSubmit");
+    binder("handleBlur");
   }
 
   handleChange({ currentTarget }) {
-    this.setState({ [currentTarget.name]: currentTarget.value });
+    this.setState({
+      [currentTarget.name]: currentTarget.value,
+      [`${currentTarget.name}Valid`]: currentTarget.validity.valid,
+    });
   }
 
-  handleClick(evt) {
-    evt.preventDefault();
-    this.props
-      .createGroup({
-        group: this.state,
-      })
-      .then(action => {
-        const groupId = Object.keys(action.payload.group)[0];
-        this.props.history.push(`/group/${groupId}`);
+  handleBlur({ currentTarget }) {
+    console.log("currentTarget.name: ", currentTarget.name);
+    if (!this.state[`${currentTarget.name}ErrorEnabled`]) {
+      this.setState({
+        [`${currentTarget.name}ErrorEnabled`]: true,
       });
+    }
   }
 
+  handleSubmit(evt) {
+    evt.preventDefault();
+    if (this.state.isFormValid) {
+      this.props
+        .createGroup({
+          group: this.state,
+        })
+        .then(action => {
+          const groupId = Object.keys(action.payload.group)[0];
+          this.props.history.push(`/group/${groupId}`);
+        });
+    }
+  }
+  componentDidUpdate() {
+    const { nameValid, descriptionValid, hometownValid } = this.state;
+    const isFormValid = nameValid && descriptionValid && hometownValid;
+    if (isFormValid !== this.state.isFormValid) {
+      this.setState({ isFormValid });
+    }
+  }
   componentWillUnmount() {
     this.props.clearGroupErrors();
   }
-
+  fieldClass(fieldStr) {
+    const valid = this.state[`${fieldStr}Valid`];
+    const errorEnabled = this.state[`${fieldStr}ErrorEnabled`];
+    if (errorEnabled) {
+      if (!valid) {
+        return "invalid-form-element";
+      }
+    }
+    return "";
+  }
   render() {
+    const { isFormValid } = this.state;
+    const buttonClass = isFormValid ? "confirm-button" : "disable-button";
+    const descriptionClass = this.fieldClass("description");
+    const nameClass = this.fieldClass("name");
+    const hometownClass = this.fieldClass("hometown");
     return (
       <main className="group-create-form">
         <header>
@@ -43,7 +87,7 @@ class GroupCreateForm extends React.Component {
           <h1>Start a new group</h1>
           <p>We'll help you find the right people to make it happen</p>
         </header>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <FormErrors errors={this.props.errors} />
           <section className="group-create-form-section">
             <div>
@@ -58,6 +102,10 @@ class GroupCreateForm extends React.Component {
                   onChange={this.handleChange}
                   name="hometown"
                   value={this.state.hometown}
+                  onBlur={this.handleBlur}
+                  ref={el => (this.hometownInput = el)}
+                  required
+                  className={hometownClass}
                 />
               </fieldset>
             </div>
@@ -75,6 +123,11 @@ class GroupCreateForm extends React.Component {
                   type="text"
                   name="name"
                   value={this.state.name}
+                  minLength="5"
+                  required
+                  onBlur={this.handleBlur}
+                  ref={el => (this.nameInput = el)}
+                  className={nameClass}
                 />
               </fieldset>
               <fieldset>
@@ -84,6 +137,11 @@ class GroupCreateForm extends React.Component {
                   name="description"
                   value={this.state.description}
                   rows="8"
+                  onBlur={this.handleBlur}
+                  minLength="50"
+                  ref={el => (this.descTextArea = el)}
+                  required
+                  className={descriptionClass}
                 />
               </fieldset>
             </div>
@@ -103,9 +161,7 @@ class GroupCreateForm extends React.Component {
                   <li>Put your members first</li>
                 </ul>
                 <p>We don't review any groups.</p>
-                <button className="confirm-button" onClick={this.handleClick}>
-                  Agree & Continue
-                </button>
+                <button className={buttonClass}>Agree & Continue</button>
               </fieldset>
             </div>
           </section>
