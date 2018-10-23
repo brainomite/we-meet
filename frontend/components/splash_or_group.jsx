@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Splash from "./splash";
-import GroupIndex from "./group/group_index";
+import GroupIndex from "./group/group_index/group_index_container";
 import { selectCurrentUser } from "../reducers/selectors";
 
 const SplashOrGroup = props => {
