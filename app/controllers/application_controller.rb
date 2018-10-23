@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if refresh
       @current_user = nil;
     end
-    @current_user ||= User.includes(:groups)
+    @current_user ||= User.includes(groups: :group_users)
                           .find_by_session_token(session[:session_token])
   end
 
