@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import GroupIndex from "./group_index";
 import { fetchGroups, fetchGroup } from "../../../actions/group_actions";
+import { selectGroups } from '../../../reducers/selectors';
 
 const msp = state => {
   return {
-    groups: state.entities.groups,
+    groups: selectGroups(state),
   };
 };
 

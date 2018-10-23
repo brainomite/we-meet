@@ -1,6 +1,32 @@
-.group-index{
+.group-index {
+  background-color: $background-off-white;
   > div {
     width: 960px;
     margin: 0 auto;
+    section {
+      display: flex;
+      flex-direction: column;
+      h4 {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      button {
+        padding: 0 16px;
+        align-self: center;
+        margin-bottom: 16px;
+        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        background-color: white;
+        height: 34px;
+      }
+      button:hover {
+        background-color: rgba(0, 0, 0, 0.07);
+      }
+    }
+    section + section {
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
   }
 }

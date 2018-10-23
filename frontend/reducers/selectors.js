@@ -22,6 +22,22 @@ const DEFAULT_USER = {
   avatarUrl: null,
 };
 
+export const selectGroups = state => {
+  const allGroups = Object.values(state.entities.groups);
+  const resultGroupsObj = { userGroups: [], otherGroups: [] };
+  const curUser = selectCurrentUser(state);
+  const userGroupObj = {};
+  curUser.group_ids.forEach(id => (userGroupObj[id] = true));
+  allGroups.forEach(group => {
+    if (userGroupObj[group.id]) {
+      resultGroupsObj.userGroups.push(group);
+    } else {
+      resultGroupsObj.otherGroups.push(group);
+    }
+  });
+  return resultGroupsObj;
+};
+
 export const selectGroup = (state, groupId) => {
   const originalGroup = state.entities.groups[groupId] || {};
   const newGroup = merge({}, DEFAULT_GROUP, originalGroup);
@@ -49,7 +65,7 @@ const selectUsers = (state, userIds) => {
   }, {});
 };
 
-const selectUser = ({ entities }, userId, defaultUser = DEFAULT_USER) =>{
+const selectUser = ({ entities }, userId, defaultUser = DEFAULT_USER) => {
   const user = entities.users[userId] || defaultUser;
   if (user) return merge({}, user);
   return user;

@@ -1,8 +1,6 @@
 .group-list-index-item {
-  width: 33.33333%;
   position: relative;
   display: inline-block;
-  padding-right: 16px;
   margin-bottom: 16px;
   box-sizing: border-box;
   a {
@@ -51,4 +49,15 @@
       }
     }
   }
+}
+
+.group-list-index-item.divide-by-three {
+  width: 33.33333%;
+}
+.group-list-index-item.divide-by-four {
+  width: 25%;
+}
+
+.group-list-index-item.glii-pad-right {
+  padding-right: 16px;
 }
