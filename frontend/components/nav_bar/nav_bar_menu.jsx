@@ -16,7 +16,7 @@ const NavBarMenu = ({
         <nav className="navbar-menu-body">
           <div className="navbar-menu-body-groups">
             <ul>
-              {userGroups.map(group => {
+              {userGroups.slice(0, 6).map(group => {
                 return (
                   <li key={group.id} className="menu-hover">
                     <Link to={`/group/${group.id}`}>{group.name}</Link>
