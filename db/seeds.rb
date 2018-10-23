@@ -13,7 +13,6 @@ Faker::Config.random = Random.new(42)
 
 def populate_groups(groups, users)
   groups.each do |group|
-    # debugger
     available_users = users - group.members
     users_to_select = Faker::Number.between(0, available_users.length-1)
     users_to_select.times do
@@ -75,7 +74,6 @@ kermit = User.create  name: "Kermit the Frog", email: 'kermit@thefrog.com',
   password: 'misspiggy', hometown_id: 1
 file = File.open('db/seeding_files/users/Kermit_the_Frog.jpg')
 kermit.avatar.attach(io: file, filename: 'Kermit_the_Frog.jpg')
-# users << kermit
 
 used_user_names = Set.new
 25.times do |user_num|
@@ -89,7 +87,6 @@ used_user_names = Set.new
   file_name = Faker::File.file_name('',nil,'jpg','')
   user.avatar.attach(io: avatar, filename: file_name)
   users << user
-  puts "create user '#{user.name}'"
 end
 
 groups = []
@@ -171,4 +168,6 @@ actors.each do |actor|
 end
 
 populate_groups(groups, users)
+groups[1..8].each { |group| group.members << kermit}
+
 sleep 1 # Allow active storage time to purge files from s3.
