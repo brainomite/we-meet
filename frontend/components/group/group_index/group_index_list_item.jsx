@@ -17,7 +17,6 @@ const GroupListIndexItem = ({ group, numPerRow, idx }) => {
     klasses.push("divide-by-four");
   }
   const klass = klasses.join(" ");
-  console.log("klass: ", klass);
   const imgStyleObj = {
     backgroundImage: `url(${groupImage(group)})`,
   };

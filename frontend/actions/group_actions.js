@@ -74,6 +74,20 @@ export const createGroup = data => {
   };
 };
 
+export const updateGroup = (groupId, data) => {
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveGroup(result));
+    };
+
+    const failure = errorResults => {
+      return dispatch(receiveGroupErrors(errorResults));
+    };
+
+    return groupAPIUtil.updateGroup(groupId, data).then(success, failure);
+  };
+};
+
 export const joinGroup = id => {
   return dispatch => {
     const success = result => {

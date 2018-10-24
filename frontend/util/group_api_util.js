@@ -20,6 +20,14 @@ export const createGroup = group => {
   });
 };
 
+export const updateGroup = (groupId, group) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/groups/${groupId}`,
+    data: group,
+  });
+};
+
 export const joinGroup = id => {
   return $.ajax({
     method: "POST",

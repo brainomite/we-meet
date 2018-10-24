@@ -121,7 +121,8 @@ header.group-header {
       display: flex;
       @include group-right-2();
       align-items: center;
-      button {
+      button,
+      a {
         width: 162.91px;
         height: 38px;
         cursor: pointer;
@@ -131,19 +132,18 @@ header.group-header {
         align-items: center;
         border-radius: 4px;
         background-color: $wemeet-light-red;
-        + button {
-          margin-left: 20px;
-        }
-        transition: background .15s;
+        transition: background 0.15s;
       }
       button:hover {
         background-color: $wemeet-red;
       }
-      button.group-show-button-deny{
-        cursor: not-allowed;
+      a {
+        background-color: rgba(41, 77, 107, 0.12);
+        border-width: 0;
+        color: $black-text;
       }
-      button.group-show-button-deny:hover {
-        background-color: grey;
+      a:hover {
+        background: rgba(41, 77, 107, 0.17);
       }
     }
   }

@@ -16,7 +16,7 @@ class Api::GroupsController < ApplicationController
         render json: @group.errors.full_messages, status: 422
       end
     elsif
-      render json: ['Must be signed in'], status: 401 # Unauthorized
+      render json: ['You must be signed in'], status: 401 # Unauthorized
     end
   end
 
@@ -34,6 +34,21 @@ class Api::GroupsController < ApplicationController
   end
 
   def update
+    if logged_in?
+      @group = Group.find_by_id(params[:id])
+      if @group.members.merge(GroupUser.organizers).include?(current_user)
+        if @group.update(group_params)
+          render :show
+        else
+          render json: @group.errors.full_messages, status: 422
+      end
+      else
+        render json: ['You must be the organizer of this group'],
+               status: 401 # Unauthorized
+      end
+    else
+      render json: ['You must be signed in'], status: 401 # Unauthorized
+    end
   end
 
   private

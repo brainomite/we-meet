@@ -38,7 +38,6 @@ class NavBar extends React.Component {
     }
 
     if (curLoggedIn && oldPath !== curPath) {
-      // console.log("Path changed!");
       if (!this.state.hideMenu) this.closeMenu();
       if (this.props.isLoggedIn) {
         this.props.getCurrentUser(this.props.currentUser.id);

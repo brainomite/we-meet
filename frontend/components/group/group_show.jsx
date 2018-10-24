@@ -2,7 +2,13 @@ import React from "react";
 import { groupImage } from "../../util/group_util";
 import MemberList from "../member_list";
 import genBinderFunc from "../../util/genBinderFunc";
-
+import { Link } from "react-router-dom";
+/*
+<Link
+  className="avatarForm-body-skipButton avatarForm-marginBottom"
+  to="/"
+>
+ */
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +21,7 @@ class GroupShow extends React.Component {
     binder("setMembersRef");
     binder("setHeaderRef");
     binder("handleScroll");
+    binder("buttonOrLink");
     this.state = {
       headerVisable: undefined,
       aboutSectionVisable: undefined,
@@ -162,12 +169,6 @@ class GroupShow extends React.Component {
     );
   }
   groupNav() {
-    const { isMember, isOrganizer } = this.props.group;
-    const buttonLabel = isMember ? "Leave" : "Join";
-    const buttonClassBase = "confirm-button";
-    const buttonClass = isOrganizer
-      ? `${buttonClassBase} group-show-button-deny`
-      : buttonClassBase;
     return (
       <nav
         id="group-nav"
@@ -193,18 +194,34 @@ class GroupShow extends React.Component {
             </li>
           </ul>
           <section>
-            {!this.props.isLoggedIn ? null : (
-              <button
-                onClick={isOrganizer ? null : this.handleJoinLeaveClick}
-                className={buttonClass}
-              >
-                {buttonLabel}
-              </button>
-            )}
+            <this.buttonOrLink />
           </section>
         </div>
       </nav>
     );
+  }
+  buttonOrLink() {
+    if (!this.props.isLoggedIn) return null;
+    const { isMember, isOrganizer } = this.props.group;
+    const buttonClass = "confirm-button";
+    if (isOrganizer) {
+      const { id } = this.props.group;
+      return (
+        <Link className={buttonClass} to={`/group/${id}/edit`}>
+          Manage
+        </Link>
+      );
+    } else {
+      const buttonLabel = isMember ? "Leave" : "Join";
+      return (
+        <button
+          onClick={isOrganizer ? null : this.handleJoinLeaveClick}
+          className={buttonClass}
+        >
+          {buttonLabel}
+        </button>
+      );
+    }
   }
 }
 export default GroupShow;

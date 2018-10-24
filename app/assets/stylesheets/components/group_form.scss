@@ -36,10 +36,14 @@
     }
   }
   > form {
+    padding-bottom: 40px;
     > section {
       width: 840px;
       margin: 0 auto;
       box-sizing: border-box;
+      padding: 0px 16px 0px;
+    }
+    > section.step-section{
       padding: 24px 16px 40px;
     }
     > section.group-create-form-section {
@@ -105,7 +109,7 @@
         width: 100%;
       }
     }
-    > .group-create-form-section + .group-create-form-section {
+    > .step-section + .step-section {
       border-top: 1px solid rgba(0, 0, 0, 0.12);
     }
   }

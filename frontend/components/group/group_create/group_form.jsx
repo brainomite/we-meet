@@ -10,18 +10,35 @@ import {
 class GroupForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: "",
-      description: "",
-      hometown: "",
-      isFormValid: false,
-      hometownValid: false,
-      nameValid: false,
-      descriptionValid: false,
-      hometownErrorEnabled: false,
-      nameErrorEnabled: false,
-      descriptionErrorEnabled: false,
-    };
+    if (this.props.groupId) {
+      const { name, description, hometown, id } = this.props.group;
+      this.state = {
+        name,
+        description,
+        hometown,
+        isFormValid: true,
+        hometownValid: true,
+        nameValid: true,
+        descriptionValid: true,
+        hometownErrorEnabled: false,
+        nameErrorEnabled: false,
+        descriptionErrorEnabled: false,
+        id,
+      };
+    } else {
+      this.state = {
+        name: "",
+        description: "",
+        hometown: "",
+        isFormValid: false,
+        hometownValid: false,
+        nameValid: false,
+        descriptionValid: false,
+        hometownErrorEnabled: false,
+        nameErrorEnabled: false,
+        descriptionErrorEnabled: false,
+      };
+    }
     const binder = genBinderFunc(this);
     binder("handleChange");
     binder("handleSubmit");
@@ -61,11 +78,20 @@ class GroupForm extends React.Component {
       });
     }
   }
-  componentDidUpdate() {
+  componentDidMount() {
+    if (this.props.groupId) this.props.fetchGroup();
+  }
+  componentDidUpdate(prevProps) {
     const { nameValid, descriptionValid, hometownValid } = this.state;
     const isFormValid = nameValid && descriptionValid && hometownValid;
     if (isFormValid !== this.state.isFormValid) {
       this.setState({ isFormValid });
+    }
+    if (this.props.groupId){
+      const { name, description, hometown, id } = this.props.group;
+      if (prevProps.group.description !== description) {
+        this.setState({ id, name, description, hometown });
+      }
     }
   }
   componentWillUnmount() {
@@ -107,12 +133,17 @@ class GroupForm extends React.Component {
       </main>
     );
   }
-
+  sectionClass() {
+    const baseClass = "group-create-form-section";
+    if (this.props.showStepsAndDisclaimer) {
+      return `${baseClass} step-section`;
+    } else return baseClass;
+  }
   hometownSection() {
     const hometownClass = this.fieldClass("hometown");
     const { hometownPrompt, showStepsAndDisclaimer } = this.props;
     return (
-      <section className="group-create-form-section">
+      <section className={this.sectionClass()}>
         <div>
           <img src={window.wemeetAssets["globe"]} />
         </div>
@@ -145,7 +176,7 @@ class GroupForm extends React.Component {
       showStepsAndDisclaimer,
     } = this.props;
     return (
-      <section className="group-create-form-section">
+      <section className={this.sectionClass()}>
         <div>
           <img src={window.wemeetAssets["tag"]} />
         </div>
@@ -193,7 +224,7 @@ class GroupForm extends React.Component {
     const { buttonText, showStepsAndDisclaimer } = this.props;
     const disclaimerClass = showStepsAndDisclaimer ? "" : "hidden";
     return (
-      <section className="group-create-form-section">
+      <section className={this.sectionClass()}>
         <div>
           <img src={window.wemeetAssets["people"]} />
         </div>
