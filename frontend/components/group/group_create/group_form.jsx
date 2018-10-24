@@ -26,6 +26,9 @@ class GroupForm extends React.Component {
     binder("handleChange");
     binder("handleSubmit");
     binder("handleBlur");
+    binder("hometown");
+    binder("nameAndDescription");
+    binder("agreement");
   }
 
   handleChange({ currentTarget }) {
@@ -90,11 +93,6 @@ class GroupForm extends React.Component {
     return obj;
   }
   render() {
-    const { isFormValid } = this.state;
-    const buttonClass = isFormValid ? "confirm-button" : "disable-button";
-    const descriptionClass = this.fieldClass("description");
-    const nameClass = this.fieldClass("name");
-    const hometownClass = this.fieldClass("hometown");
     return (
       <main className="group-create-form">
         <header>
@@ -104,91 +102,110 @@ class GroupForm extends React.Component {
         </header>
         <form onSubmit={this.handleSubmit}>
           <FormErrors errors={this.props.errors} />
-          <section className="group-create-form-section">
-            <div>
-              <img src={window.wemeetAssets["globe"]} />
-            </div>
-            <div>
-              <fieldset>
-                <small>Step 1 of 3</small>
-                <h2>What's your new Group's hometown?</h2>
-                <input
-                  type="text"
-                  onChange={this.handleChange}
-                  name="hometown"
-                  value={this.state.hometown}
-                  onBlur={this.handleBlur}
-                  ref={el => (this.hometownInput = el)}
-                  required
-                  className={hometownClass}
-                />
-                <GroupCreateHometownError
-                  {...this.createErrorObj("hometown")}
-                />
-              </fieldset>
-            </div>
-          </section>
-          <section className="group-create-form-section">
-            <div>
-              <img src={window.wemeetAssets["tag"]} />
-            </div>
-            <div>
-              <fieldset>
-                <small>Step 2 of 3</small>
-                <h2>What will your group's name be?</h2>
-                <input
-                  onChange={this.handleChange}
-                  type="text"
-                  name="name"
-                  value={this.state.name}
-                  minLength="5"
-                  required
-                  onBlur={this.handleBlur}
-                  ref={el => (this.nameInput = el)}
-                  className={nameClass}
-                />
-                <GroupCreateNameError {...this.createErrorObj("name")} />
-              </fieldset>
-              <fieldset>
-                <h2>Describe who should join, and what your Group will do.</h2>
-                <textarea
-                  onChange={this.handleChange}
-                  name="description"
-                  value={this.state.description}
-                  rows="8"
-                  onBlur={this.handleBlur}
-                  minLength="50"
-                  ref={el => (this.descTextArea = el)}
-                  required
-                  className={descriptionClass}
-                />
-                <GroupCreateDescriptionError
-                  {...this.createErrorObj("description")}
-                />
-              </fieldset>
-            </div>
-          </section>
-          <section className="group-create-form-section">
-            <div>
-              <img src={window.wemeetAssets["people"]} />
-            </div>
-            <div>
-              <fieldset>
-                <small>Step 3 of 3</small>
-                <h2>What it means to be a Meetup</h2>
-                <ul>
-                  <li>Real, in-person conversations</li>
-                  <li>Open and honest intentions</li>
-                  <li>Always safe and respectful</li>
-                  <li>Put your members first</li>
-                </ul>
-                <p>We don't review any groups.</p>
-                <button className={buttonClass}>Agree & Continue</button>
-              </fieldset>
-            </div>
-          </section>
+          <this.hometown />
+          <this.nameAndDescription />
+          <this.agreement />
         </form>
       </main>
+    );
+  }
+
+  hometown() {
+    const hometownClass = this.fieldClass("hometown");
+    return (
+      <section className="group-create-form-section">
+        <div>
+          <img src={window.wemeetAssets["globe"]} />
+        </div>
+        <div>
+          <fieldset>
+            <small>Step 1 of 3</small>
+            <h2>What's your new Group's hometown?</h2>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              name="hometown"
+              value={this.state.hometown}
+              onBlur={this.handleBlur}
+              ref={el => (this.hometownInput = el)}
+              required
+              className={hometownClass}
+            />
+            <GroupCreateHometownError {...this.createErrorObj("hometown")} />
+          </fieldset>
+        </div>
+      </section>
+    );
+  }
+  nameAndDescription() {
+    const descriptionClass = this.fieldClass("description");
+    const nameClass = this.fieldClass("name");
+    return (
+      <section className="group-create-form-section">
+        <div>
+          <img src={window.wemeetAssets["tag"]} />
+        </div>
+        <div>
+          <fieldset>
+            <small>Step 2 of 3</small>
+            <h2>What will your group's name be?</h2>
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="name"
+              value={this.state.name}
+              minLength="5"
+              required
+              onBlur={this.handleBlur}
+              ref={el => (this.nameInput = el)}
+              className={nameClass}
+            />
+            <GroupCreateNameError {...this.createErrorObj("name")} />
+          </fieldset>
+          <fieldset>
+            <h2>Describe who should join, and what your Group will do.</h2>
+            <textarea
+              onChange={this.handleChange}
+              name="description"
+              value={this.state.description}
+              rows="8"
+              onBlur={this.handleBlur}
+              minLength="50"
+              ref={el => (this.descTextArea = el)}
+              required
+              className={descriptionClass}
+            />
+            <GroupCreateDescriptionError
+              {...this.createErrorObj("description")}
+            />
+          </fieldset>
+        </div>
+      </section>
+    );
+  }
+  agreement() {
+    const { isFormValid } = this.state;
+    const buttonClass = isFormValid ? "confirm-button" : "disable-button";
+    return (
+      <section className="group-create-form-section">
+        <div>
+          <img src={window.wemeetAssets["people"]} />
+        </div>
+        <div>
+          <fieldset>
+            <small>Step 3 of 3</small>
+            <h2>What it means to be a Meetup</h2>
+            <ul>
+              <li>Real, in-person conversations</li>
+              <li>Open and honest intentions</li>
+              <li>Always safe and respectful</li>
+              <li>Put your members first</li>
+            </ul>
+            <p>We don't review any groups.</p>
+            <button className={buttonClass}>Agree & Continue</button>
+          </fieldset>
+        </div>
+      </section>
     );
   }
 }
