@@ -26,9 +26,9 @@ class GroupForm extends React.Component {
     binder("handleChange");
     binder("handleSubmit");
     binder("handleBlur");
-    binder("hometown");
-    binder("nameAndDescription");
-    binder("agreement");
+    binder("hometownSection");
+    binder("nameAndDescriptionSection");
+    binder("buttonSection");
   }
 
   handleChange({ currentTarget }) {
@@ -54,14 +54,11 @@ class GroupForm extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     if (this.state.isFormValid) {
-      this.props
-        .createGroup({
-          group: this.state,
-        })
-        .then(action => {
-          const groupId = Object.keys(action.payload.group)[0];
-          this.props.history.push(`/group/${groupId}`);
-        });
+      const { submitGroupAction } = this.props;
+      submitGroupAction({ group: this.state }).then(action => {
+        const groupId = Object.keys(action.payload.group)[0];
+        this.props.history.push(`/group/${groupId}`);
+      });
     }
   }
   componentDidUpdate() {
@@ -93,25 +90,27 @@ class GroupForm extends React.Component {
     return obj;
   }
   render() {
+    const { title, subtitle } = this.props;
     return (
       <main className="group-create-form">
         <header>
           <div />
-          <h1>Start a new group</h1>
-          <p>We'll help you find the right people to make it happen</p>
+          <h1>{title}</h1>
+          <p>{subtitle}</p>
         </header>
         <form onSubmit={this.handleSubmit}>
           <FormErrors errors={this.props.errors} />
-          <this.hometown />
-          <this.nameAndDescription />
-          <this.agreement />
+          <this.hometownSection />
+          <this.nameAndDescriptionSection />
+          <this.buttonSection />
         </form>
       </main>
     );
   }
 
-  hometown() {
+  hometownSection() {
     const hometownClass = this.fieldClass("hometown");
+    const { hometownPrompt, showStepsAndDisclaimer } = this.props;
     return (
       <section className="group-create-form-section">
         <div>
@@ -119,8 +118,8 @@ class GroupForm extends React.Component {
         </div>
         <div>
           <fieldset>
-            <small>Step 1 of 3</small>
-            <h2>What's your new Group's hometown?</h2>
+            {showStepsAndDisclaimer ? <small>Step 1 of 3</small> : null}
+            <h2>{hometownPrompt}</h2>
             <input
               type="text"
               onChange={this.handleChange}
@@ -137,9 +136,14 @@ class GroupForm extends React.Component {
       </section>
     );
   }
-  nameAndDescription() {
+  nameAndDescriptionSection() {
     const descriptionClass = this.fieldClass("description");
     const nameClass = this.fieldClass("name");
+    const {
+      namePrompt,
+      descriptionPrompt,
+      showStepsAndDisclaimer,
+    } = this.props;
     return (
       <section className="group-create-form-section">
         <div>
@@ -147,8 +151,8 @@ class GroupForm extends React.Component {
         </div>
         <div>
           <fieldset>
-            <small>Step 2 of 3</small>
-            <h2>What will your group's name be?</h2>
+            {showStepsAndDisclaimer ? <small>Step 2 of 3</small> : null}
+            <h2>{namePrompt}</h2>
             <input
               onChange={this.handleChange}
               type="text"
@@ -163,7 +167,7 @@ class GroupForm extends React.Component {
             <GroupCreateNameError {...this.createErrorObj("name")} />
           </fieldset>
           <fieldset>
-            <h2>Describe who should join, and what your Group will do.</h2>
+            <h2>{descriptionPrompt}</h2>
             <textarea
               onChange={this.handleChange}
               name="description"
@@ -183,9 +187,11 @@ class GroupForm extends React.Component {
       </section>
     );
   }
-  agreement() {
+  buttonSection() {
     const { isFormValid } = this.state;
     const buttonClass = isFormValid ? "confirm-button" : "disable-button";
+    const { buttonText, showStepsAndDisclaimer } = this.props;
+    const disclaimerClass = showStepsAndDisclaimer ? "" : "hidden";
     return (
       <section className="group-create-form-section">
         <div>
@@ -193,16 +199,16 @@ class GroupForm extends React.Component {
         </div>
         <div>
           <fieldset>
-            <small>Step 3 of 3</small>
-            <h2>What it means to be a Meetup</h2>
-            <ul>
+            {showStepsAndDisclaimer ? <small>Step 3 of 3</small> : null}
+            <h2 className={disclaimerClass}>What it means to be a Meetup</h2>
+            <ul className={disclaimerClass}>
               <li>Real, in-person conversations</li>
               <li>Open and honest intentions</li>
               <li>Always safe and respectful</li>
               <li>Put your members first</li>
             </ul>
-            <p>We don't review any groups.</p>
-            <button className={buttonClass}>Agree & Continue</button>
+            <p className={disclaimerClass}>We don't review any groups.</p>
+            <button className={buttonClass}>{buttonText}</button>
           </fieldset>
         </div>
       </section>
