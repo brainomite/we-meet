@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { createGroup, clearGroupErrors } from "../../../actions/group_actions";
-import GroupCreateForm from "./group_create_form";
+import GroupCreateForm from "./group_form";
 
 const msp = ({ errors }) => ({
   errors: errors.group,

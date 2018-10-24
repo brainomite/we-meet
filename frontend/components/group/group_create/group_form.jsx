@@ -7,7 +7,7 @@ import {
   GroupCreateDescriptionError,
 } from "./group_create_errors";
 
-class GroupCreateForm extends React.Component {
+class GroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -193,4 +193,4 @@ class GroupCreateForm extends React.Component {
   }
 }
 
-export default GroupCreateForm;
+export default GroupForm;
