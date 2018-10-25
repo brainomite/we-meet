@@ -29,6 +29,7 @@ class Group < ApplicationRecord
     through: :group_users,
     source: :member_type
 
+  has_one_attached :image
 
   accepts_nested_attributes_for :group_users
 end

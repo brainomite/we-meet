@@ -22,6 +22,7 @@ class GroupShow extends React.Component {
     binder("setHeaderRef");
     binder("handleScroll");
     binder("buttonOrLink");
+    binder("imageButton");
     this.state = {
       headerVisable: undefined,
       aboutSectionVisable: undefined,
@@ -51,6 +52,20 @@ class GroupShow extends React.Component {
       ? this.props.leaveGroup(groupId)
       : this.props.joinGroup(groupId);
     result.then(() => this.props.getCurrentUser(this.props.currentUser.id));
+  }
+  handleFile() {
+    return event => {
+      const file = event.currentTarget.files[0];
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        const formData = new FormData();
+        formData.append("image", file);
+        this.props.setImage(this.props.group.id, formData);
+      };
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    };
   }
   render() {
     const {
@@ -137,15 +152,17 @@ class GroupShow extends React.Component {
     ) : (
       <i className="far fa-user-circle" />
     );
-    const imgStyleObj = {
-      backgroundImage: `url(${groupImage(group)})`,
-    };
     return (
       <header className="group-header" ref={this.setHeaderRef}>
         <div className="group-header-container">
           <div>
             <div>
-              <div className="group-header-image" style={imgStyleObj} />
+              <img
+                className="group-header-image"
+                src={groupImage(group)}
+                onLoad={this.props.closeModal}
+              />
+              <this.imageButton />
             </div>
             <section>
               <h1>{group.name}</h1>
@@ -166,6 +183,22 @@ class GroupShow extends React.Component {
           </div>
         </div>
       </header>
+    );
+  }
+  imageButton() {
+    const { isOrganizer } = this.props.group;
+    if (!isOrganizer) return null;
+    return (
+      <label>
+        <div>
+          <i className="far fa-image" /> <span>Upload a photo</span>
+        </div>
+        <input
+          className="image-input"
+          type="file"
+          onChange={this.handleFile()}
+        />
+      </label>
     );
   }
   groupNav() {

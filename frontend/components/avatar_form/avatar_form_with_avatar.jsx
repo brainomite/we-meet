@@ -14,7 +14,7 @@ const AvatarFormWithAvatar = props => {
       <label className="avatarForm-body-change avatarForm-marginBottom">
         Change
         <input
-          className="avatarForm-body-input"
+          className="image-input"
           type="file"
           onChange={props.handleFile(props)}
         />

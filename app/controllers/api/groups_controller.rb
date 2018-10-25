@@ -21,7 +21,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.includes(:group_users).all
+    @groups = Group.includes(:group_users, image_attachment: :blob).all
   end
 
   def show
@@ -41,7 +41,7 @@ class Api::GroupsController < ApplicationController
           render :show
         else
           render json: @group.errors.full_messages, status: 422
-      end
+        end
       else
         render json: ['You must be the organizer of this group'],
                status: 401 # Unauthorized
@@ -60,7 +60,22 @@ class Api::GroupsController < ApplicationController
           render :delete
         else
           render json: @group.errors.full_messages, status: 422
+        end
+      else
+        render json: ['You must be the organizer of this group'],
+               status: 401 # Unauthorized
       end
+    else
+      render json: ['You must be signed in'], status: 401 # Unauthorized
+    end
+  end
+
+  def set_image
+    if logged_in?
+      @group = find_full_group(params[:id])
+      if @group.members.merge(GroupUser.organizers).include?(current_user)
+        @group.image.attach(params.require(:image))
+        render :show
       else
         render json: ['You must be the organizer of this group'],
                status: 401 # Unauthorized

@@ -18,6 +18,7 @@
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>"json"}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>"json"}
 #                api_avatar POST   /api/avatar(.:format)                                                                    api/avatars#create {:format=>"json"}
+#                       api POST   /api/groups/:id/image(.:format)                                                          api/groups#set_image {:format=>"json"}
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -34,5 +35,6 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy]
     resource :avatar, only: [:create]
+    post 'groups/:id/image', to: 'groups#set_image'
   end
 end

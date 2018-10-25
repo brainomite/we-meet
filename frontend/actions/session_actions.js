@@ -1,5 +1,5 @@
 import * as SessionAPIUtil from "./../util/session_api_util";
-import { openModal, closeModal } from "./modal_actions";
+import { openModal } from "./modal_actions";
 
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";

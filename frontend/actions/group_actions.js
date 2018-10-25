@@ -1,4 +1,5 @@
 import * as groupAPIUtil from "./../util/group_api_util";
+import { openModal } from "./modal_actions";
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
@@ -128,5 +129,17 @@ export const leaveGroup = id => {
     };
 
     return groupAPIUtil.leaveGroup(id).then(success);
+  };
+};
+
+export const setImage = (groupId ,image) => {
+  console.log('image: ', image);
+  return dispatch => {
+    const success = result => {
+      return dispatch(receiveGroup(result));
+    };
+
+    dispatch(openModal("loading"));
+    return groupAPIUtil.setImage(groupId, image).then(success);
   };
 };

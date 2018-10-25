@@ -10,7 +10,7 @@ const AvatarFormNoAvatar = props => {
       <label className="avatarForm-body-button confirm-button">
         Upload a photo
         <input
-          className="avatarForm-body-input"
+          className="image-input"
           type="file"
           onChange={props.handleFile(props)}
         />

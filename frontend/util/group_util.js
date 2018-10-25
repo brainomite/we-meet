@@ -1,3 +1,3 @@
 export const groupImage = group => {
-  return group.imageUrl || window.wemeetAssets.defaultGroupImage;
+  return group.imageUrl;
 };

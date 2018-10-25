@@ -2,7 +2,13 @@ json.group do
   json.set! group.id.to_s.to_sym do
     json.extract! group, :id, :name, :description,
                         :hometown, :group_user_ids, :member_ids
+    if group.image.attached?
+      json.imageUrl url_for(group.image)
+    else
+      json.imageUrl asset_path("default-group-0.png")
+    end
   end
+
 end
 if logged_in?
   group_ids = current_user.group_ids

@@ -48,3 +48,13 @@ export const leaveGroup = id => {
     url: `/api/groups/${id}/group_user/`,
   });
 };
+
+export const setImage = (groupId, image) => {
+  return $.ajax({
+    method: "POST",
+    url: `/api/groups/${groupId}/image`,
+    data: image,
+    contentType: false,
+    processData: false,
+  });
+};

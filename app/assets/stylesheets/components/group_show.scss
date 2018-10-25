@@ -79,15 +79,40 @@ header.group-header {
     }
     > div {
       @include group-left-3();
+      position: relative;
+      label {
+        box-sizing: border-box;
+        padding: 8px 32px;
+        position: relative;
+        width: 200px;
+        height: 40px;
+        display: block;
+        background-color: white;
+        border-radius: 4px;
+        top: 20px;
+        left: 20px;
+        font-size: 14px;
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          i {
+            font-size: 24px;
+          }
+        }
+      }
     }
   }
 }
 
 .group-header-image {
-  background-color: green;
+  background-color: white;
   width: 600px;
   height: 337px;
   border-radius: 8px;
+  object-fit: cover;
+  position: absolute;
 }
 #group-nav {
   border-top: 1px solid $wemeet-gray-black;
