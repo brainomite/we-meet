@@ -4,6 +4,7 @@ export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 export const CLEAR_GROUP_ERRORS = "CLEAR_GROUP_ERRORS";
+export const DESTROY_GROUP = "DESTROY_GROUP";
 
 export const clearGroupErrors = () => {
   return dispatch => {
@@ -25,10 +26,32 @@ const receiveGroups = groups => {
   };
 };
 
+const destroyGroup = ({id}) => {
+  return {
+    type: DESTROY_GROUP,
+    id,
+  };
+};
+
 const receiveGroupErrors = errors => {
   return {
     type: RECEIVE_GROUP_ERRORS,
     errors: errors.responseJSON,
+  };
+};
+
+export const deleteGroup = groupId => {
+  return dispatch => {
+    const success = result => {
+      console.log('result: ', result);
+      return dispatch(destroyGroup(result));
+    };
+
+    const failure = errorResults => {
+      return dispatch(receiveGroupErrors(errorResults));
+    };
+
+    return groupAPIUtil.deleteGroup(groupId).then(success, failure);
   };
 };
 

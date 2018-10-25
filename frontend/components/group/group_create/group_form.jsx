@@ -46,6 +46,7 @@ class GroupForm extends React.Component {
     binder("hometownSection");
     binder("nameAndDescriptionSection");
     binder("buttonSection");
+    binder("handleDelete");
   }
 
   handleChange({ currentTarget }) {
@@ -67,7 +68,12 @@ class GroupForm extends React.Component {
       });
     }
   }
-
+  handleDelete(evt) {
+    evt.preventDefault();
+    this.props.deleteGroup().then(() => {
+      this.props.history.push(`/`);
+    });
+  }
   handleSubmit(evt) {
     evt.preventDefault();
     if (this.state.isFormValid) {
@@ -87,7 +93,7 @@ class GroupForm extends React.Component {
     if (isFormValid !== this.state.isFormValid) {
       this.setState({ isFormValid });
     }
-    if (this.props.groupId){
+    if (this.props.groupId) {
       const { name, description, hometown, id } = this.props.group;
       if (prevProps.group.description !== description) {
         this.setState({ id, name, description, hometown });
@@ -221,7 +227,7 @@ class GroupForm extends React.Component {
   buttonSection() {
     const { isFormValid } = this.state;
     const buttonClass = isFormValid ? "confirm-button" : "disable-button";
-    const { buttonText, showStepsAndDisclaimer } = this.props;
+    const { buttonText, showStepsAndDisclaimer, showDeleteButton } = this.props;
     const disclaimerClass = showStepsAndDisclaimer ? "" : "hidden";
     return (
       <section className={this.sectionClass()}>
@@ -240,6 +246,11 @@ class GroupForm extends React.Component {
             </ul>
             <p className={disclaimerClass}>We don't review any groups.</p>
             <button className={buttonClass}>{buttonText}</button>
+            {showDeleteButton ? (
+              <button className={buttonClass} onClick={this.handleDelete}>
+                Delete Group
+              </button>
+            ) : null}
           </fieldset>
         </div>
       </section>

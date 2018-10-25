@@ -14,6 +14,7 @@
 #                 api_group GET    /api/groups/:id(.:format)                                                                api/groups#show {:format=>"json"}
 #                           PATCH  /api/groups/:id(.:format)                                                                api/groups#update {:format=>"json"}
 #                           PUT    /api/groups/:id(.:format)                                                                api/groups#update {:format=>"json"}
+#                           DELETE /api/groups/:id(.:format)                                                                api/groups#destroy {:format=>"json"}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>"json"}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>"json"}
 #                api_avatar POST   /api/avatar(.:format)                                                                    api/avatars#create {:format=>"json"}
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   root "static_pages#root"
   namespace :api, defaults: { format: 'json' } do
     resources :users, only: [:index, :update, :create, :show]
-    resources :groups, only: [:index, :update, :create, :show] do
+    resources :groups, only: [:index, :update, :create, :show, :destroy] do
       resource :group_user, only: [:create, :destroy]
     end
     resource :session, only: [:create, :destroy]

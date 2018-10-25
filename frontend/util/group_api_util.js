@@ -28,6 +28,13 @@ export const updateGroup = (groupId, group) => {
   });
 };
 
+export const deleteGroup = groupId => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/groups/${groupId}`,
+  });
+};
+
 export const joinGroup = id => {
   return $.ajax({
     method: "POST",

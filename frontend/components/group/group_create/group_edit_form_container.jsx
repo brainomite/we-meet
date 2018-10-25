@@ -3,6 +3,7 @@ import {
   updateGroup,
   clearGroupErrors,
   fetchGroup,
+  deleteGroup,
 } from "../../../actions/group_actions";
 import { selectGroup } from "../../../reducers/selectors";
 import GroupCreateForm from "./group_form";
@@ -18,14 +19,18 @@ const msp = (state, ownProps) => ({
   showStepsAndDisclaimer: false,
   group: selectGroup(state, ownProps.match.params.groupId),
   groupId: ownProps.match.params.groupId,
+  showDeleteButton: true,
 });
 
-const mdp = (dispatch, ownProps) => ({
-  submitGroupAction: group =>
-    dispatch(updateGroup(ownProps.match.params.groupId, group)),
-  clearGroupErrors: () => dispatch(clearGroupErrors()),
-  fetchGroup: () => dispatch(fetchGroup(ownProps.match.params.groupId)),
-});
+const mdp = (dispatch, ownProps) => {
+  const { groupId } = ownProps.match.params;
+  return {
+    submitGroupAction: group => dispatch(updateGroup(groupId, group)),
+    clearGroupErrors: () => dispatch(clearGroupErrors()),
+    fetchGroup: () => dispatch(fetchGroup(groupId)),
+    deleteGroup: () => dispatch(deleteGroup(groupId)),
+  };
+};
 
 export default connect(
   msp,

@@ -96,6 +96,9 @@
             height: 39.2px;
             padding: 0 16px;
           }
+          button + button {
+            margin-left: 24px;
+          }
           button.disable-button {
             background-color: rgba(117, 117, 117, 0.12);
             border: 1px solid rgba(0, 0, 0, 0.12);
